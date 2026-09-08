@@ -3,3 +3,4 @@
 node_modules
 *.log
 Copia de metodo_ainnovate.md
+.env*
