@@ -1,9 +1,12 @@
 (function () {
-  var yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  var copyrightYear = document.getElementById('copyright-year');
+  if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
+
+  // ---------------------------------------------------------------
+  // Navigation: dropdowns and mobile drawer
+  // ---------------------------------------------------------------
   var header = document.querySelector('.site-header');
   var nav = document.getElementById('main-nav');
   var toggle = document.querySelector('.nav-toggle');
@@ -28,13 +31,17 @@
     });
   });
 
-  if (toggle && nav) {
+  function setDrawer(open) {
+    if (!header || !toggle) return;
+    header.classList.toggle('nav-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (!open) closeMenus();
+  }
+
+  if (toggle) {
     toggle.addEventListener('click', function () {
-      var open = header.classList.toggle('nav-open');
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      document.body.classList.toggle('nav-locked', open);
-      if (!open) closeMenus();
+      setDrawer(!header.classList.contains('nav-open'));
     });
   }
 
@@ -45,32 +52,155 @@
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
       closeMenus();
-      if (header && header.classList.contains('nav-open')) toggle.click();
+      setDrawer(false);
     }
   });
 
-  // Close the mobile drawer after following an in-page link.
   if (nav) {
     nav.querySelectorAll('a[href^="#"]').forEach(function (link) {
       link.addEventListener('click', function () {
-        if (header.classList.contains('nav-open')) toggle.click();
+        setDrawer(false);
         closeMenus();
       });
     });
   }
 
-  // Placeholder links (client login, Form CRS) until the real destinations exist.
-  document.querySelectorAll('[data-placeholder]').forEach(function (link) {
-    link.addEventListener('click', function (event) {
-      event.preventDefault();
-      var label = link.getAttribute('data-placeholder') === 'form-crs' ? 'Form CRS' : 'Client login';
-      link.setAttribute('title', label + ' link coming soon');
-      link.classList.add('placeholder-hit');
-      setTimeout(function () { link.classList.remove('placeholder-hit'); }, 900);
-    });
-  });
+  // Header condenses after scrolling a little.
+  if (header) {
+    var onScroll = function () {
+      header.classList.toggle('is-scrolled', window.scrollY > 40);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
 
-  // Only one FAQ item open at a time.
+  // ---------------------------------------------------------------
+  // Live office status (Central time, Mon to Fri 9:00 to 4:30)
+  // ---------------------------------------------------------------
+  function centralNow() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Chicago',
+        weekday: 'short',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: false
+      }).formatToParts(new Date());
+      var get = function (type) {
+        var p = parts.find(function (x) { return x.type === type; });
+        return p ? p.value : '';
+      };
+      return { day: get('weekday'), minutes: (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10) };
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function updateStatus() {
+    var now = centralNow();
+    if (!now) return;
+    var weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+    var isWeekday = weekdays.indexOf(now.day) !== -1;
+    var open = 9 * 60;
+    var close = 16 * 60 + 30;
+    var isOpen = isWeekday && now.minutes >= open && now.minutes < close;
+    var text;
+    if (isOpen) {
+      text = 'Open now · until 4:30 pm';
+    } else if (isWeekday && now.minutes < open) {
+      text = 'Closed · opens today at 9:00 am';
+    } else if (now.day === 'Fri' || now.day === 'Sat' || now.day === 'Sun') {
+      text = 'Closed · opens Monday at 9:00 am';
+    } else {
+      text = 'Closed · opens tomorrow at 9:00 am';
+    }
+    document.querySelectorAll('[data-status]').forEach(function (el) {
+      el.classList.toggle('is-open', isOpen);
+      var label = el.querySelector('.status-text');
+      if (label) label.textContent = text;
+    });
+  }
+
+  updateStatus();
+  setInterval(updateStatus, 60000);
+
+  // ---------------------------------------------------------------
+  // Service card spotlight follows the cursor
+  // ---------------------------------------------------------------
+  if (!reduceMotion) {
+    document.querySelectorAll('.service-card').forEach(function (card) {
+      card.addEventListener('pointermove', function (event) {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (event.clientX - rect.left) + 'px');
+        card.style.setProperty('--my', (event.clientY - rect.top) + 'px');
+      });
+    });
+  }
+
+  // ---------------------------------------------------------------
+  // A year with Sloan: today marker and milestone panel
+  // ---------------------------------------------------------------
+  var track = document.querySelector('[data-year]');
+  if (track) {
+    var today = new Date();
+    var start = new Date(today.getFullYear(), 0, 1);
+    var end = new Date(today.getFullYear() + 1, 0, 1);
+    var progress = (today - start) / (end - start);
+
+    var setProgress = function () { track.style.setProperty('--progress', progress.toFixed(4)); };
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          setProgress();
+          io.disconnect();
+        }
+      }, { threshold: 0.4 });
+      io.observe(track);
+    } else {
+      setProgress();
+    }
+
+    var stops = Array.prototype.slice.call(track.querySelectorAll('.year-stop'));
+    var panel = track.querySelector('.year-panel');
+    var title = track.querySelector('.year-panel-title');
+    var text = track.querySelector('.year-panel-text');
+
+    var select = function (stop, focus) {
+      stops.forEach(function (s) {
+        var on = s === stop;
+        s.setAttribute('aria-selected', String(on));
+        s.tabIndex = on ? 0 : -1;
+      });
+      title.innerHTML = stop.getAttribute('data-title');
+      text.textContent = stop.getAttribute('data-text');
+      panel.classList.remove('is-swapping');
+      void panel.offsetWidth;
+      panel.classList.add('is-swapping');
+      if (focus) stop.focus();
+    };
+
+    // Start on the milestone closest to today.
+    var month = today.getMonth() + 1;
+    var current = stops[0];
+    stops.forEach(function (s) {
+      if (parseFloat(s.style.getPropertyValue('--m')) <= month + 0.5) current = s;
+    });
+    select(current, false);
+
+    stops.forEach(function (stop, i) {
+      stop.addEventListener('click', function () { select(stop, false); });
+      stop.addEventListener('keydown', function (event) {
+        var next = null;
+        if (event.key === 'ArrowRight') next = stops[(i + 1) % stops.length];
+        if (event.key === 'ArrowLeft') next = stops[(i - 1 + stops.length) % stops.length];
+        if (next) { event.preventDefault(); select(next, true); }
+      });
+    });
+  }
+
+  // ---------------------------------------------------------------
+  // FAQ: one open at a time
+  // ---------------------------------------------------------------
   var faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(function (item) {
     item.addEventListener('toggle', function () {
@@ -81,40 +211,4 @@
       }
     });
   });
-
-  // "Who we serve" tabs.
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.serve-tab'));
-  function selectTab(tab) {
-    tabs.forEach(function (t) {
-      var selected = t === tab;
-      t.setAttribute('aria-selected', String(selected));
-      t.tabIndex = selected ? 0 : -1;
-      var panel = document.getElementById(t.getAttribute('aria-controls'));
-      if (panel) panel.hidden = !selected;
-    });
-  }
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener('click', function () { selectTab(tab); });
-    tab.addEventListener('keydown', function (event) {
-      var next = null;
-      if (event.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
-      if (event.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
-      if (next) { event.preventDefault(); selectTab(next); next.focus(); }
-    });
-  });
-
-  // Subtle reveal on scroll for cards.
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
-  }
 })();
