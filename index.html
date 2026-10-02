@@ -5,24 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Sloan Financial Solutions helps families and business owners plan with clarity, confidence, and long-term strategy."
+      content="Sloan Financial Solutions is a fiduciary financial advisor in Burnsville, MN helping families and business owners with financial planning, wealth management, tax services, and business guidance."
     />
-    <title>Sloan Financial Solutions | Wealth Strategy</title>
-    <meta name="theme-color" content="#1d3140" />
+    <title>Sloan Financial Solutions | Financial Advisor in Burnsville, MN</title>
+    <meta name="theme-color" content="#1b2f3f" />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sloan-financial-landing.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Sloan Financial Solutions" />
-    <meta property="og:title" content="Sloan Financial Solutions | Wealth Strategy" />
+    <meta property="og:title" content="Sloan Financial Solutions | Financial Advisor in Burnsville, MN" />
     <meta
       property="og:description"
-      content="Financial strategy built around the life you want to live. Fiduciary planning for families, professionals, and business owners."
+      content="Clarity for the life you are building. Fiduciary financial planning, wealth management, and tax services for families, professionals, and business owners in Burnsville, MN."
     />
     <meta property="og:image" content="/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sloan Financial Solutions | Wealth Strategy" />
+    <meta name="twitter:title" content="Sloan Financial Solutions | Financial Advisor in Burnsville, MN" />
     <meta
       name="twitter:description"
-      content="Financial strategy built around the life you want to live. Fiduciary planning for families, professionals, and business owners."
+      content="Clarity for the life you are building. Fiduciary financial planning, wealth management, and tax services for families, professionals, and business owners in Burnsville, MN."
     />
     <meta name="twitter:image" content="/og-image.svg" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -34,8 +35,85 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Sloan Financial Solutions",
+        "url": "https://sloan-financial-landing.vercel.app/",
+        "telephone": "+1-952-432-8000",
+        "email": "david@sloanfs.com",
+        "description": "Fiduciary financial advisor in Burnsville, MN offering financial planning, wealth management, tax services, and business guidance.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Burnsville",
+          "addressRegion": "MN",
+          "addressCountry": "US"
+        },
+        "areaServed": ["Burnsville MN", "Apple Valley MN", "Eagan MN", "Lakeville MN", "Savage MN", "Twin Cities"],
+        "priceRange": "$$"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does a fiduciary financial advisor do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A fiduciary financial advisor is required to act in your best interest. At Sloan Financial Solutions that means recommendations are built around your goals, your timeline, and your risk tolerance, not around products."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who do you work with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We work with families, professionals, pre-retirees, and business owners in Burnsville, the south metro, and across the Twin Cities. Many clients come to us at a transition point: a new business, a growing family, a sale, or retirement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer tax preparation and tax planning?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We prepare individual and small business tax returns and coordinate tax planning with your overall financial plan, so decisions about retirement contributions, business income, and investments are made with taxes in mind."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you charge for your services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We explain fees clearly before you commit to anything. Depending on the service, compensation may be a planning fee, an asset-based advisory fee, or a flat fee for tax preparation. Full details are available in our Form CRS."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens in a first meeting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The first conversation is about you, not paperwork. We talk through your goals, your concerns, and the decisions in front of you. From there we outline what a plan could look like and you decide whether it makes sense to move forward."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a minimum to work with you?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We do not believe good advice should wait until you have a certain net worth. Reach out and we will be honest about whether we are the right fit."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
+    <a class="skip-link" href="#top">Skip to content</a>
+
     <header class="site-header">
       <div class="container nav-wrap">
         <a href="#top" class="brand" aria-label="Sloan Financial Solutions home">
@@ -46,16 +124,54 @@
           </span>
         </a>
 
-        <nav class="main-nav" aria-label="Main navigation">
-          <a href="#approach">Approach</a>
-          <a href="#services">Services</a>
-          <a href="#process">Process</a>
-          <a href="#about">About</a>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+          <div class="nav-item has-menu">
+            <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="menu-services">
+              Services
+              <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="nav-menu" id="menu-services">
+              <a href="#financial-planning"><strong>Financial Planning</strong><span>Roadmaps for investing, retirement, and life goals</span></a>
+              <a href="#wealth-management"><strong>Wealth Management</strong><span>Disciplined strategies to preserve and grow capital</span></a>
+              <a href="#tax-services"><strong>Tax Services</strong><span>Preparation and planning, coordinated with your plan</span></a>
+              <a href="#business-guidance"><strong>Business Guidance</strong><span>Succession, cash flow, and owner wealth</span></a>
+            </div>
+          </div>
+
+          <div class="nav-item has-menu">
+            <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="menu-about">
+              About
+              <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="nav-menu" id="menu-about">
+              <a href="#about"><strong>Our Story</strong><span>Why we do what we do</span></a>
+              <a href="#team"><strong>Meet the Team</strong><span>The people behind the plan</span></a>
+              <a href="#process"><strong>Our Process</strong><span>Discover, design, implement, review</span></a>
+            </div>
+          </div>
+
+          <div class="nav-item has-menu">
+            <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="menu-resources">
+              Resources
+              <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="nav-menu" id="menu-resources">
+              <a href="#faq"><strong>FAQ</strong><span>Common questions, straight answers</span></a>
+              <a href="#notes"><strong>Client Notes</strong><span>Words from the people we serve</span></a>
+              <a href="#disclosures"><strong>Form CRS &amp; Disclosures</strong><span>Relationship summary and compliance</span></a>
+            </div>
+          </div>
+
+          <a class="nav-link" href="#contact">Contact</a>
         </nav>
 
         <div class="nav-actions">
+          <a href="#" class="text-link login-link" data-placeholder="client-login">Client Login</a>
           <a href="tel:9524328000" class="text-link">Call</a>
           <a href="mailto:david@sloanfs.com" class="button button-primary button-nav">Book a consult</a>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
     </header>
@@ -84,6 +200,10 @@
               <div>
                 <strong>Fiduciary</strong>
                 <span>advice with your priorities first</span>
+              </div>
+              <div>
+                <strong>Burnsville, MN</strong>
+                <span>serving the south metro and Twin Cities</span>
               </div>
             </div>
           </div>
@@ -169,8 +289,8 @@
             <h3>Financial decisions designed for real life.</h3>
           </div>
 
-          <div class="service-grid">
-            <article class="service-card">
+          <div class="service-grid service-grid-4">
+            <article class="service-card" id="financial-planning">
               <span class="service-number">01</span>
               <h4>Financial Planning</h4>
               <p>
@@ -179,7 +299,7 @@
               </p>
             </article>
 
-            <article class="service-card service-card-dark">
+            <article class="service-card service-card-dark" id="wealth-management">
               <span class="service-number">02</span>
               <h4>Wealth Management</h4>
               <p>
@@ -187,8 +307,17 @@
               </p>
             </article>
 
-            <article class="service-card">
+            <article class="service-card service-card-gold" id="tax-services">
               <span class="service-number">03</span>
+              <h4>Tax Services</h4>
+              <p>
+                Individual and small business tax preparation, plus year-round planning that keeps
+                taxes aligned with the rest of your strategy.
+              </p>
+            </article>
+
+            <article class="service-card" id="business-guidance">
+              <span class="service-number">04</span>
               <h4>Business Guidance</h4>
               <p>
                 Advice for business owners navigating succession, cash flow, and the intersection of
@@ -199,7 +328,7 @@
         </div>
       </section>
 
-      <section id="approach" class="process section-shell">
+      <section id="process" class="process section-shell">
         <div class="container">
           <div class="section-header left">
             <p class="eyebrow">How we work</p>
@@ -234,6 +363,101 @@
         </div>
       </section>
 
+      <section id="team" class="team section-shell">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow">Meet the team</p>
+            <h3>The people behind the plan.</h3>
+          </div>
+          <p class="section-intro">
+            A small team that knows your name, your family, and your goals. No call centers, no
+            hand-offs.
+          </p>
+
+          <div class="team-grid">
+            <article class="team-card team-card-lead">
+              <div class="team-photo" data-initials="DS" aria-hidden="true"></div>
+              <div class="team-body">
+                <p class="team-role">Founder &amp; Financial Advisor</p>
+                <h4>David S.</h4>
+                <p>
+                  Twenty-plus years guiding families and business owners through the decisions that
+                  shape their financial lives. Fiduciary first, always.
+                </p>
+                <ul class="team-facts">
+                  <li>Based in Burnsville, MN</li>
+                  <li>Backyard pool, open May through September</li>
+                  <li>Believer in quiet Sundays at home</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-photo" data-initials="TM" aria-hidden="true"></div>
+              <div class="team-body">
+                <p class="team-role">Client Service &amp; Operations</p>
+                <h4>Team member</h4>
+                <p>Profile coming soon. Photo, bio, and three personal facts to be added.</p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-photo" data-initials="TM" aria-hidden="true"></div>
+              <div class="team-body">
+                <p class="team-role">Tax &amp; Planning Associate</p>
+                <h4>Team member</h4>
+                <p>Profile coming soon. Photo, bio, and three personal facts to be added.</p>
+              </div>
+            </article>
+
+            <article class="team-card team-card-dog">
+              <div class="team-photo team-photo-dog" aria-hidden="true">
+                <svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><path d="M20 14c-6 0-9 6-9 12v6c0 9 7 18 21 18s21-9 21-18v-6c0-6-3-12-9-12-4 0-6 3-8 3h-8c-2 0-4-3-8-3z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="25" cy="30" r="2.5" fill="currentColor"/><circle cx="39" cy="30" r="2.5" fill="currentColor"/><path d="M28 38c2 3 6 3 8 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+              <div class="team-body">
+                <p class="team-role">Chief Morale Officer</p>
+                <h4>Office dog</h4>
+                <p>Greets every visitor. Accepts belly rubs as payment.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="notes" class="notes section-shell">
+        <div class="container">
+          <div class="section-header left">
+            <p class="eyebrow">Client notes</p>
+            <h3>Thank-you cards we keep on the desk.</h3>
+          </div>
+          <p class="section-intro">
+            We cannot publish traditional reviews, but we can share the notes clients send us. Each
+            one is a reminder of why we do this.
+          </p>
+
+          <div class="notes-grid">
+            <figure class="note-card">
+              <blockquote>
+                <p>Thank-you note placeholder. A scanned card from a client will appear here.</p>
+              </blockquote>
+              <figcaption>A client family, Burnsville</figcaption>
+            </figure>
+            <figure class="note-card note-card-tilt">
+              <blockquote>
+                <p>Thank-you note placeholder. A scanned card from a client will appear here.</p>
+              </blockquote>
+              <figcaption>A business owner, south metro</figcaption>
+            </figure>
+            <figure class="note-card">
+              <blockquote>
+                <p>Thank-you note placeholder. A scanned card from a client will appear here.</p>
+              </blockquote>
+              <figcaption>A retiree, Twin Cities</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <section class="stat-band section-shell">
         <div class="container stat-grid">
           <div>
@@ -255,7 +479,88 @@
         </div>
       </section>
 
-      <section class="cta-panel">
+      <section id="faq" class="faq section-shell">
+        <div class="container faq-grid">
+          <div class="faq-heading">
+            <p class="eyebrow">Questions, answered</p>
+            <h3>Working with a financial advisor in Burnsville.</h3>
+            <p class="section-intro">
+              Straight answers to the questions we hear most. Do not see yours? Call us at
+              <a href="tel:9524328000">(952) 432-8000</a>.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>What does a fiduciary financial advisor do?</summary>
+              <div class="faq-answer">
+                <p>
+                  A fiduciary financial advisor is required to act in your best interest. At Sloan
+                  Financial Solutions that means recommendations are built around your goals, your
+                  timeline, and your risk tolerance, not around products.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>Who do you work with?</summary>
+              <div class="faq-answer">
+                <p>
+                  We work with families, professionals, pre-retirees, and business owners in
+                  Burnsville, the south metro, and across the Twin Cities. Many clients come to us at
+                  a transition point: a new business, a growing family, a sale, or retirement.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>Do you offer tax preparation and tax planning?</summary>
+              <div class="faq-answer">
+                <p>
+                  Yes. We prepare individual and small business tax returns and coordinate tax
+                  planning with your overall financial plan, so decisions about retirement
+                  contributions, business income, and investments are made with taxes in mind.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>How do you charge for your services?</summary>
+              <div class="faq-answer">
+                <p>
+                  We explain fees clearly before you commit to anything. Depending on the service,
+                  compensation may be a planning fee, an asset-based advisory fee, or a flat fee for
+                  tax preparation. Full details are available in our
+                  <a href="#disclosures">Form CRS</a>.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>What happens in a first meeting?</summary>
+              <div class="faq-answer">
+                <p>
+                  The first conversation is about you, not paperwork. We talk through your goals,
+                  your concerns, and the decisions in front of you. From there we outline what a plan
+                  could look like and you decide whether it makes sense to move forward.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>Is there a minimum to work with you?</summary>
+              <div class="faq-answer">
+                <p>
+                  We do not believe good advice should wait until you have a certain net worth. Reach
+                  out and we will be honest about whether we are the right fit.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="cta-panel">
         <div class="container cta-wrap">
           <div class="cta-copy">
             <p class="eyebrow light">The next chapter starts here</p>
@@ -272,7 +577,7 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div>
+        <div class="footer-brand">
           <a href="#top" class="brand brand-footer" aria-label="Sloan Financial Solutions home">
             <span class="brand-mark">S</span>
             <span class="brand-text">
@@ -280,14 +585,26 @@
               <small>Financial Solutions</small>
             </span>
           </a>
+          <p class="footer-tagline">Fiduciary financial planning in Burnsville, MN.</p>
         </div>
 
         <div>
-          <p class="footer-title">Advisory</p>
+          <p class="footer-title">Services</p>
           <ul>
-            <li>Financial planning</li>
-            <li>Wealth management</li>
-            <li>Business guidance</li>
+            <li><a href="#financial-planning">Financial planning</a></li>
+            <li><a href="#wealth-management">Wealth management</a></li>
+            <li><a href="#tax-services">Tax services</a></li>
+            <li><a href="#business-guidance">Business guidance</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-title">Company</p>
+          <ul>
+            <li><a href="#about">Our story</a></li>
+            <li><a href="#team">Meet the team</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#" data-placeholder="client-login">Client login</a></li>
           </ul>
         </div>
 
@@ -300,6 +617,33 @@
           </ul>
         </div>
       </div>
+
+      <div class="container footer-compliance" id="disclosures">
+        <div class="compliance-links">
+          <a href="#" data-placeholder="form-crs" class="compliance-link">
+            <span class="compliance-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 1.5h5l3 3V14.5H4z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 1.5v3h3M6 8h4M6 10.5h4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </span>
+            Form CRS (Client Relationship Summary)
+          </a>
+          <a href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer" class="compliance-link">
+            <span class="compliance-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="14" height="14"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            Check the background of this firm on FINRA's BrokerCheck
+          </a>
+          <a href="privacy.html" class="compliance-link">Privacy Policy</a>
+        </div>
+        <p class="disclosure">
+          <strong>Important disclosures.</strong> Securities and investment advisory services
+          disclosure to be provided by compliance before launch. This website is for informational
+          purposes only and does not constitute an offer to sell or a solicitation of an offer to buy
+          any security. Investing involves risk, including the possible loss of principal. Past
+          performance is not a guarantee of future results. Tax services are offered separately from
+          investment advisory services.
+        </p>
+      </div>
+
       <div class="container footer-bottom">
         <p>&copy; <span id="year">2026</span> Sloan Financial Solutions. All rights reserved.</p>
         <p>Burnsville, MN &middot; Fiduciary financial planning</p>
