@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Sloan Financial Solutions is an independent, fiduciary financial advisor in Burnsville, MN. Financial planning, wealth management, tax services, and business guidance for families and business owners in the south metro."
+      content="Sloan Financial Solutions is an independent, fiduciary financial advisor in Burnsville, MN. Financial planning, wealth management, tax services, and business guidance for families, business owners, and retirees in the south metro."
     />
     <title>Sloan Financial Solutions | Financial Advisor in Burnsville, MN</title>
-    <meta name="theme-color" content="#1b2f3f" />
+    <meta name="theme-color" content="#13283a" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://sloan-financial-landing.vercel.app/" />
     <meta property="og:type" content="website" />
@@ -16,31 +16,34 @@
     <meta property="og:title" content="Sloan Financial Solutions | Financial Advisor in Burnsville, MN" />
     <meta
       property="og:description"
-      content="Honest financial advice from someone who knows your name. Independent, fiduciary planning and tax services in Burnsville, MN."
+      content="Honest advice and a plan built around your life. Independent, fiduciary financial planning and tax services in Burnsville, MN."
     />
     <meta property="og:image" content="/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Sloan Financial Solutions | Financial Advisor in Burnsville, MN" />
     <meta
       name="twitter:description"
-      content="Honest financial advice from someone who knows your name. Independent, fiduciary planning and tax services in Burnsville, MN."
+      content="Honest advice and a plan built around your life. Independent, fiduciary financial planning and tax services in Burnsville, MN."
     />
     <meta name="twitter:image" content="/og-image.svg" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="preload" as="image" href="images/hero-lake.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script>document.documentElement.classList.add("js");</script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "FinancialService",
         "name": "Sloan Financial Solutions",
         "url": "https://sloan-financial-landing.vercel.app/",
+        "image": "https://sloan-financial-landing.vercel.app/images/hero-lake.jpg",
         "telephone": "+1-952-432-8000",
         "email": "david@sloanfs.com",
         "founder": { "@type": "Person", "name": "David S." },
@@ -145,7 +148,8 @@
               <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="nav-menu" id="menu-about">
-              <a href="#about"><strong>A Note from David</strong><span>Why this practice exists</span></a>
+              <a href="#about"><strong>Who We Are</strong><span>An independent practice in Burnsville</span></a>
+              <a href="#serve"><strong>Who We Serve</strong><span>Families, business owners, and retirees</span></a>
               <a href="#team"><strong>Meet the Team</strong><span>The people you will actually talk to</span></a>
               <a href="#process"><strong>How We Work</strong><span>What the first year looks like</span></a>
             </div>
@@ -169,7 +173,7 @@
         <div class="nav-actions">
           <a href="#" class="text-link login-link" data-placeholder="client-login">Client login</a>
           <a href="tel:9524328000" class="text-link phone-link">(952) 432-8000</a>
-          <a href="mailto:david@sloanfs.com" class="button button-primary button-nav">Schedule a conversation</a>
+          <a href="mailto:david@sloanfs.com" class="button button-gold button-nav">Schedule a call</a>
           <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
             <span></span><span></span><span></span>
           </button>
@@ -178,357 +182,364 @@
     </header>
 
     <main id="top">
+      <!-- Hero -->
       <section class="hero">
-        <div class="container hero-grid">
+        <div class="hero-media" aria-hidden="true">
+          <img src="images/hero-lake.jpg" alt="" width="960" height="640" />
+        </div>
+
+        <div class="container hero-inner">
           <div class="hero-copy">
-            <p class="kicker">Independent financial advisor &middot; Burnsville, Minnesota</p>
-            <h1>Honest financial advice from someone who knows your name.</h1>
+            <p class="kicker kicker-light">Independent &middot; Fiduciary &middot; Burnsville, MN</p>
+            <h1>Honest advice.<br />A plan built around <em>your life.</em></h1>
             <p class="lead">
-              I'm David. For more than twenty years I've helped families and business owners in the
-              south metro make confident decisions about money. No call center, no sales quotas.
-              Just a plan built around your life, and a person who picks up the phone.
+              For more than twenty years we've helped families, business owners, and retirees in
+              the south metro make confident decisions about money, with one team handling your
+              planning, investments, and taxes together.
             </p>
 
             <div class="hero-actions">
-              <a href="mailto:david@sloanfs.com" class="button button-primary">Schedule a conversation</a>
-              <a href="tel:9524328000" class="button button-secondary">Call (952) 432-8000</a>
+              <a href="mailto:david@sloanfs.com" class="button button-gold">Schedule a conversation</a>
+              <a href="tel:9524328000" class="button button-outline-light">Call (952) 432-8000</a>
             </div>
-
-            <ul class="hero-facts" aria-label="At a glance">
-              <li><strong>Fiduciary</strong><span>Your interests come first, by obligation</span></li>
-              <li><strong>20+ years</strong><span>Planning through every kind of market</span></li>
-              <li><strong>Tax and planning</strong><span>Under one roof, talking to each other</span></li>
-            </ul>
           </div>
 
-          <figure class="hero-portrait">
-            <div class="portrait portrait-large" role="img" aria-label="Portrait of David S., founder of Sloan Financial Solutions">
-              <span class="portrait-placeholder">Portrait<br />coming soon</span>
+          <aside class="hero-note" aria-label="A word from the founder">
+            <div class="avatar" aria-hidden="true">DS</div>
+            <div>
+              <p class="hero-note-quote">"The first meeting is just a conversation. No forms, no pitch."</p>
+              <p class="hero-note-name">David S. &middot; Founder</p>
             </div>
-            <figcaption>
-              <strong>David S.</strong>
-              <span>Founder, Sloan Financial Solutions</span>
-            </figcaption>
-          </figure>
+          </aside>
         </div>
       </section>
 
-      <section id="about" class="letter section">
-        <div class="container letter-grid">
-          <div class="letter-aside">
-            <p class="kicker">A note from David</p>
-            <h2>Why I do this work.</h2>
+      <!-- Credentials strip -->
+      <section class="creds" aria-label="Why clients choose Sloan">
+        <div class="container creds-row">
+          <div class="cred">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 4v8c0 7-4.6 12-11 14C9.6 27 5 22 5 15V7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 16l3.5 3.5L21 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><strong>Fiduciary</strong><span>Your interests first, by obligation</span></div>
           </div>
-
-          <div class="letter-paper">
-            <p>
-              Most people don't need a product. They need someone who will sit down, look at the
-              whole picture, and tell them the truth about where they stand and what to do next.
-            </p>
-            <p>
-              I started Sloan Financial Solutions because I wanted to do this work the way I'd want
-              it done for my own family: independent, unhurried, and honest about trade-offs. That
-              means planning, investing, and taxes are handled together, by people who actually
-              talk to each other.
-            </p>
-            <p>
-              If you're a family trying to make good decisions, or a business owner carrying more
-              than you'd like to, I'd be glad to talk. The first conversation is just that, a
-              conversation.
-            </p>
-            <p class="signature" aria-label="Signed, David">David</p>
-            <p class="signature-caption">David S., Founder &middot; Burnsville, MN</p>
+          <div class="cred">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 9v7l5 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div><strong>20+ years</strong><span>Planning through every kind of market</span></div>
+          </div>
+          <div class="cred">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="5" width="20" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11h10M11 16h10M11 21h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div><strong>Tax + planning</strong><span>Under one roof, talking to each other</span></div>
+          </div>
+          <div class="cred">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 29s-9-8.5-9-15a9 9 0 0118 0c0 6.5-9 15-9 15z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="16" cy="14" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            <div><strong>Local</strong><span>Burnsville, Eagan, Apple Valley, Lakeville</span></div>
           </div>
         </div>
       </section>
 
+      <!-- About -->
+      <section id="about" class="about section">
+        <div class="container about-grid">
+          <div class="about-media reveal">
+            <img src="images/conversation.jpg" alt="Two people talking over coffee at a wooden table" loading="lazy" width="960" height="640" />
+            <div class="about-badge">
+              <strong>1</strong>
+              <span>team that knows<br />your whole picture</span>
+            </div>
+          </div>
+
+          <div class="about-copy reveal">
+            <p class="kicker">Who we are</p>
+            <h2>A small, independent practice that treats your money like it matters. <em>Because it does.</em></h2>
+            <p>
+              Most people don't need another product. They need someone who will sit down, look at
+              the whole picture, and tell them the truth about where they stand and what to do next.
+            </p>
+            <p>
+              That's what we do. Planning, investing, and taxes are handled together by people who
+              actually talk to each other, and who will still be here when life changes.
+            </p>
+            <div class="about-sign">
+              <span class="signature">David</span>
+              <span class="about-sign-caption">David S., Founder</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
       <section id="services" class="services section">
         <div class="container">
-          <div class="section-head">
-            <p class="kicker">How I can help</p>
-            <h2>Four things we do well, and nothing we don't.</h2>
+          <div class="section-head center reveal">
+            <p class="kicker">What we do</p>
+            <h2>Four services. <em>One plan.</em></h2>
+            <p class="section-intro">Each piece is built to work with the others, so nothing falls between the cracks.</p>
           </div>
 
-          <ol class="service-list">
-            <li class="service-row" id="financial-planning">
-              <span class="service-index">01</span>
-              <div class="service-text">
-                <h3>Financial Planning</h3>
-                <p>
-                  A clear roadmap for retirement, investing, savings, debt, and the goals that sit
-                  behind them. Revisited every year, because life changes.
-                </p>
-              </div>
-            </li>
-            <li class="service-row" id="wealth-management">
-              <span class="service-index">02</span>
-              <div class="service-text">
-                <h3>Wealth Management</h3>
-                <p>
-                  Disciplined, low-drama investment management focused on preserving what you have
-                  built and growing it with intention.
-                </p>
-              </div>
-            </li>
-            <li class="service-row" id="tax-services">
-              <span class="service-index">03</span>
-              <div class="service-text">
-                <h3>Tax Services</h3>
-                <p>
-                  Individual and small business tax preparation, plus year-round planning so the
-                  tax return and the financial plan are never strangers.
-                </p>
-              </div>
-            </li>
-            <li class="service-row" id="business-guidance">
-              <span class="service-index">04</span>
-              <div class="service-text">
-                <h3>Business Guidance</h3>
-                <p>
-                  For owners navigating succession, cash flow, and the place where the business's
-                  money and the family's money meet.
-                </p>
-              </div>
-            </li>
-          </ol>
+          <div class="service-grid">
+            <article class="service-card reveal" id="financial-planning">
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><path d="M4 26h24M7 22l6-7 5 4 8-10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 9h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <h3>Financial Planning</h3>
+              <p>A clear roadmap for retirement, investing, savings, and debt, revisited every year because life changes.</p>
+              <a href="#contact" class="card-link">Start a plan <span aria-hidden="true">&rarr;</span></a>
+            </article>
+
+            <article class="service-card reveal" id="wealth-management">
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><path d="M16 4l11 6H5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 13v10M13 13v10M19 13v10M24 13v10M4 27h24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              </span>
+              <h3>Wealth Management</h3>
+              <p>Disciplined, low-drama investment management focused on preserving what you've built and growing it with intention.</p>
+              <a href="#contact" class="card-link">Talk about investing <span aria-hidden="true">&rarr;</span></a>
+            </article>
+
+            <article class="service-card reveal" id="tax-services">
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><rect x="7" y="4" width="18" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M11 10h10M11 15h10M11 20h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="21" cy="22" r="1.4" fill="currentColor"/></svg>
+              </span>
+              <h3>Tax Services</h3>
+              <p>Individual and small business tax preparation, plus year-round planning so your return and your plan are never strangers.</p>
+              <a href="#contact" class="card-link">Get help with taxes <span aria-hidden="true">&rarr;</span></a>
+            </article>
+
+            <article class="service-card reveal" id="business-guidance">
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><rect x="4" y="10" width="24" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 10V7a2 2 0 012-2h4a2 2 0 012 2v3M4 17h24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              </span>
+              <h3>Business Guidance</h3>
+              <p>For owners navigating succession, cash flow, and the place where the business's money and the family's money meet.</p>
+              <a href="#contact" class="card-link">Plan for your business <span aria-hidden="true">&rarr;</span></a>
+            </article>
+          </div>
         </div>
       </section>
 
+      <!-- Who we serve -->
+      <section id="serve" class="serve section">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="kicker">Who we serve</p>
+            <h2>Different seasons of life. <em>The same honest advice.</em></h2>
+          </div>
+
+          <div class="serve-tabs" role="tablist" aria-label="Who we serve">
+            <button type="button" role="tab" id="tab-families" aria-controls="panel-families" aria-selected="true" class="serve-tab">Families &amp; professionals</button>
+            <button type="button" role="tab" id="tab-business" aria-controls="panel-business" aria-selected="false" class="serve-tab" tabindex="-1">Business owners</button>
+            <button type="button" role="tab" id="tab-retirees" aria-controls="panel-retirees" aria-selected="false" class="serve-tab" tabindex="-1">Pre-retirees &amp; retirees</button>
+          </div>
+
+          <div class="serve-panel" role="tabpanel" id="panel-families" aria-labelledby="tab-families">
+            <div class="serve-media"><img src="images/serve-families.jpg" decoding="async" alt="A family cooking together in their kitchen" width="960" height="640" /></div>
+            <div class="serve-copy">
+              <h3>Building a life, and a plan to match.</h3>
+              <p>Careers are growing, kids are growing, and every decision seems to affect three others. We help you sort out what matters first.</p>
+              <ul class="checks">
+                <li>How much should we be saving, and where?</li>
+                <li>Are we on track for college and retirement at the same time?</li>
+                <li>Do we have the right protection if something happens?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="serve-panel" role="tabpanel" id="panel-business" aria-labelledby="tab-business" hidden>
+            <div class="serve-media"><img src="images/serve-business.jpg" decoding="async" alt="A business owner working at her desk" width="960" height="640" /></div>
+            <div class="serve-copy">
+              <h3>Your business is part of your wealth. Plan like it.</h3>
+              <p>Owners carry a lot. We help you see the business and the household as one picture, from cash flow to the day you step away.</p>
+              <ul class="checks">
+                <li>How do I pay myself and still grow the company?</li>
+                <li>What's the smartest retirement plan for my business?</li>
+                <li>What does a successful exit or succession look like?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="serve-panel" role="tabpanel" id="panel-retirees" aria-labelledby="tab-retirees" hidden>
+            <div class="serve-media"><img src="images/serve-retirees.jpg" decoding="async" alt="A retired couple sitting together on a park bench in autumn" width="960" height="640" /></div>
+            <div class="serve-copy">
+              <h3>Turning a lifetime of saving into a retirement you enjoy.</h3>
+              <p>The questions change when the paychecks stop. We help you build income you can count on and a plan for what you leave behind.</p>
+              <ul class="checks">
+                <li>When can I retire, and how much can I spend?</li>
+                <li>How do I draw income in the most tax-efficient order?</li>
+                <li>How do I make sure my family is taken care of?</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Process -->
       <section id="process" class="process section">
         <div class="container">
-          <div class="section-head">
-            <p class="kicker">How we work</p>
+          <div class="section-head center reveal">
+            <p class="kicker kicker-light">How we work</p>
             <h2>What the first year looks like.</h2>
           </div>
 
-          <ol class="steps">
-            <li>
-              <span class="step-number">1</span>
+          <ol class="timeline">
+            <li class="reveal">
+              <span class="t-num">1</span>
               <h3>Listen</h3>
               <p>We talk about your goals, your worries, and the decisions in front of you. No forms yet.</p>
             </li>
-            <li>
-              <span class="step-number">2</span>
+            <li class="reveal">
+              <span class="t-num">2</span>
               <h3>Plan</h3>
-              <p>We put together a written plan with clear priorities and honest trade-offs.</p>
+              <p>You get a written plan with clear priorities and honest trade-offs.</p>
             </li>
-            <li>
-              <span class="step-number">3</span>
+            <li class="reveal">
+              <span class="t-num">3</span>
               <h3>Act</h3>
-              <p>We implement, step by step, and handle the paperwork so you don't have to.</p>
+              <p>We implement step by step and handle the paperwork so you don't have to.</p>
             </li>
-            <li>
-              <span class="step-number">4</span>
+            <li class="reveal">
+              <span class="t-num">4</span>
               <h3>Check in</h3>
-              <p>We meet regularly, adjust as life changes, and keep the plan pointed at your life.</p>
+              <p>We meet regularly and adjust as life changes. Taxes included.</p>
             </li>
           </ol>
         </div>
       </section>
 
+      <!-- Team -->
       <section id="team" class="team section">
         <div class="container">
-          <div class="section-head">
+          <div class="section-head reveal">
             <p class="kicker">Meet the team</p>
-            <h2>The people you'll actually talk to.</h2>
-            <p class="section-intro">
-              A small office in Burnsville. When you call, one of us answers. When you have a
-              question, you ask the person who knows your file.
-            </p>
+            <h2>The people you'll <em>actually</em> talk to.</h2>
+            <p class="section-intro">When you call, one of us answers. When you have a question, you ask the person who knows your file.</p>
           </div>
 
           <div class="team-grid">
-            <article class="team-card">
-              <div class="portrait" role="img" aria-label="Portrait of David S.">
-                <span class="portrait-placeholder">Photo</span>
+            <article class="team-card reveal">
+              <div class="team-photo"><span>DS</span></div>
+              <div class="team-info">
+                <h3>David S.</h3>
+                <p class="team-role">Founder &amp; Financial Advisor</p>
+                <p class="team-bio">Twenty-plus years guiding families and business owners in the south metro. Opens the backyard pool every May and closes it reluctantly.</p>
               </div>
-              <h3>David S.</h3>
-              <p class="team-role">Founder &amp; Financial Advisor</p>
-              <p>
-                Twenty-plus years guiding families and business owners in the south metro. Fiduciary
-                first, always.
-              </p>
-              <ul class="team-facts">
-                <li>Lives in Burnsville with his family</li>
-                <li>Opens the backyard pool every May, closes it reluctantly</li>
-                <li>Firm believer in quiet Sundays at home</li>
-              </ul>
             </article>
 
-            <article class="team-card">
-              <div class="portrait" role="img" aria-label="Portrait coming soon">
-                <span class="portrait-placeholder">Photo</span>
+            <article class="team-card reveal">
+              <div class="team-photo"><span>TM</span></div>
+              <div class="team-info">
+                <h3>Team member</h3>
+                <p class="team-role">Client Service &amp; Operations</p>
+                <p class="team-bio">Profile coming soon.</p>
               </div>
-              <h3>Team member</h3>
-              <p class="team-role">Client Service &amp; Operations</p>
-              <p>Profile coming soon.</p>
             </article>
 
-            <article class="team-card">
-              <div class="portrait" role="img" aria-label="Portrait coming soon">
-                <span class="portrait-placeholder">Photo</span>
+            <article class="team-card reveal">
+              <div class="team-photo"><span>TM</span></div>
+              <div class="team-info">
+                <h3>Team member</h3>
+                <p class="team-role">Tax &amp; Planning Associate</p>
+                <p class="team-bio">Profile coming soon.</p>
               </div>
-              <h3>Team member</h3>
-              <p class="team-role">Tax &amp; Planning Associate</p>
-              <p>Profile coming soon.</p>
             </article>
 
-            <article class="team-card">
-              <div class="portrait" role="img" aria-label="Photo of the office dog coming soon">
-                <span class="portrait-placeholder">Photo</span>
+            <article class="team-card reveal">
+              <div class="team-photo team-photo-dog">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 14c-6 0-9 6-9 12v6c0 9 7 18 21 18s21-9 21-18v-6c0-6-3-12-9-12-4 0-6 3-8 3h-8c-2 0-4-3-8-3z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="25" cy="30" r="2.2" fill="currentColor"/><circle cx="39" cy="30" r="2.2" fill="currentColor"/><path d="M28 38c2 3 6 3 8 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
               </div>
-              <h3>The office dog</h3>
-              <p class="team-role">Head of Greetings</p>
-              <p>Meets every visitor at the door. Paid in belly rubs.</p>
+              <div class="team-info">
+                <h3>The office dog</h3>
+                <p class="team-role">Head of Greetings</p>
+                <p class="team-bio">Meets every visitor at the door. Paid in belly rubs.</p>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
+      <!-- Client notes -->
       <section id="notes" class="notes section">
         <div class="container">
-          <div class="section-head">
+          <div class="section-head center reveal">
             <p class="kicker">Client notes</p>
             <h2>The cards we keep on the desk.</h2>
-            <p class="section-intro">
-              Our industry doesn't allow us to publish reviews. What we can share are the notes
-              clients send us. Each one is a reminder of why we do this.
-            </p>
+            <p class="section-intro">Our industry doesn't allow us to publish reviews. What we can share are the notes clients send us.</p>
           </div>
 
           <div class="notes-grid">
-            <figure class="note-card">
-              <blockquote>
-                <p>Thank-you note placeholder. A scanned card from a client will appear here.</p>
-              </blockquote>
+            <figure class="note-card reveal">
+              <blockquote><p>Placeholder for a client's thank-you card. A scanned card will appear here.</p></blockquote>
               <figcaption>A family in Burnsville</figcaption>
             </figure>
-            <figure class="note-card">
-              <blockquote>
-                <p>Thank-you note placeholder. A scanned card from a client will appear here.</p>
-              </blockquote>
-              <figcaption>A business owner in the south metro</figcaption>
+            <figure class="note-card reveal">
+              <blockquote><p>Placeholder for a client's thank-you card. A scanned card will appear here.</p></blockquote>
+              <figcaption>A business owner in Eagan</figcaption>
             </figure>
-            <figure class="note-card">
-              <blockquote>
-                <p>Thank-you note placeholder. A scanned card from a client will appear here.</p>
-              </blockquote>
-              <figcaption>A retired couple in the Twin Cities</figcaption>
+            <figure class="note-card reveal">
+              <blockquote><p>Placeholder for a client's thank-you card. A scanned card will appear here.</p></blockquote>
+              <figcaption>A retired couple in Lakeville</figcaption>
             </figure>
           </div>
         </div>
       </section>
 
+      <!-- FAQ -->
       <section id="faq" class="faq section">
         <div class="container faq-grid">
-          <div class="faq-aside">
+          <div class="faq-aside reveal">
             <p class="kicker">Common questions</p>
-            <h2>Things people ask before they call.</h2>
-            <p class="section-intro">
-              Don't see yours? Call <a href="tel:9524328000">(952) 432-8000</a> and ask. We'll
-              give you a straight answer.
-            </p>
+            <h2>Things people ask <em>before they call.</em></h2>
+            <p class="section-intro">Don't see yours? Call <a href="tel:9524328000">(952) 432-8000</a>. You'll get a straight answer.</p>
+            <img src="images/planning-notebook.jpg" alt="Hands writing in a notebook next to a cup of coffee" class="faq-img" loading="lazy" width="960" height="640" />
           </div>
 
           <div class="faq-list">
             <details class="faq-item" open>
               <summary>What does a fiduciary financial advisor do?</summary>
-              <div class="faq-answer">
-                <p>
-                  A fiduciary financial advisor is required to act in your best interest. At Sloan
-                  Financial Solutions that means recommendations are built around your goals, your
-                  timeline, and your risk tolerance, not around products.
-                </p>
-              </div>
+              <div class="faq-answer"><p>A fiduciary financial advisor is required to act in your best interest. At Sloan Financial Solutions that means recommendations are built around your goals, your timeline, and your risk tolerance, not around products.</p></div>
             </details>
-
             <details class="faq-item">
               <summary>Who do you work with?</summary>
-              <div class="faq-answer">
-                <p>
-                  We work with families, professionals, pre-retirees, and business owners in
-                  Burnsville, the south metro, and across the Twin Cities. Many clients come to us at
-                  a transition point: a new business, a growing family, a sale, or retirement.
-                </p>
-              </div>
+              <div class="faq-answer"><p>We work with families, professionals, pre-retirees, and business owners in Burnsville, the south metro, and across the Twin Cities. Many clients come to us at a transition point: a new business, a growing family, a sale, or retirement.</p></div>
             </details>
-
             <details class="faq-item">
               <summary>Do you offer tax preparation and tax planning?</summary>
-              <div class="faq-answer">
-                <p>
-                  Yes. We prepare individual and small business tax returns and coordinate tax
-                  planning with your overall financial plan, so decisions about retirement
-                  contributions, business income, and investments are made with taxes in mind.
-                </p>
-              </div>
+              <div class="faq-answer"><p>Yes. We prepare individual and small business tax returns and coordinate tax planning with your overall financial plan, so decisions about retirement contributions, business income, and investments are made with taxes in mind.</p></div>
             </details>
-
             <details class="faq-item">
               <summary>How do you charge for your services?</summary>
-              <div class="faq-answer">
-                <p>
-                  We explain fees clearly before you commit to anything. Depending on the service,
-                  compensation may be a planning fee, an asset-based advisory fee, or a flat fee for
-                  tax preparation. Full details are available in our
-                  <a href="#disclosures">Form CRS</a>.
-                </p>
-              </div>
+              <div class="faq-answer"><p>We explain fees clearly before you commit to anything. Depending on the service, compensation may be a planning fee, an asset-based advisory fee, or a flat fee for tax preparation. Full details are available in our <a href="#disclosures">Form CRS</a>.</p></div>
             </details>
-
             <details class="faq-item">
               <summary>What happens in a first meeting?</summary>
-              <div class="faq-answer">
-                <p>
-                  The first conversation is about you, not paperwork. We talk through your goals,
-                  your concerns, and the decisions in front of you. From there we outline what a plan
-                  could look like and you decide whether it makes sense to move forward.
-                </p>
-              </div>
+              <div class="faq-answer"><p>The first conversation is about you, not paperwork. We talk through your goals, your concerns, and the decisions in front of you. From there we outline what a plan could look like and you decide whether it makes sense to move forward.</p></div>
             </details>
-
             <details class="faq-item">
               <summary>Is there a minimum to work with you?</summary>
-              <div class="faq-answer">
-                <p>
-                  We do not believe good advice should wait until you have a certain net worth. Reach
-                  out and we will be honest about whether we are the right fit.
-                </p>
-              </div>
+              <div class="faq-answer"><p>We do not believe good advice should wait until you have a certain net worth. Reach out and we will be honest about whether we are the right fit.</p></div>
             </details>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="contact section">
-        <div class="container contact-grid">
-          <div class="contact-copy">
-            <p class="kicker">Get in touch</p>
-            <h2>Let's talk about what's next.</h2>
-            <p>
-              A phone call or an email is all it takes. We'll find a time to sit down, in the office
-              or over video, and talk through where you are and where you'd like to be.
-            </p>
-            <a href="mailto:david@sloanfs.com" class="button button-primary">Schedule a conversation</a>
+      <!-- Contact -->
+      <section id="contact" class="contact">
+        <div class="contact-bg" aria-hidden="true">
+          <img src="images/stone-arch-bridge.jpg" alt="" loading="lazy" width="1800" height="1200" />
+        </div>
+        <div class="container contact-inner">
+          <div class="contact-copy reveal">
+            <p class="kicker kicker-light">Rooted in the south metro</p>
+            <h2>Let's talk about <em>what's next.</em></h2>
+            <p>A phone call or an email is all it takes. We'll sit down, in the office or over video, and talk through where you are and where you'd like to be.</p>
+            <div class="hero-actions">
+              <a href="mailto:david@sloanfs.com" class="button button-gold">Schedule a conversation</a>
+              <a href="tel:9524328000" class="button button-outline-light">Call (952) 432-8000</a>
+            </div>
           </div>
 
-          <dl class="contact-details">
-            <div>
-              <dt>Phone</dt>
-              <dd><a href="tel:9524328000">(952) 432-8000</a></dd>
-            </div>
-            <div>
-              <dt>Email</dt>
-              <dd><a href="mailto:david@sloanfs.com">david@sloanfs.com</a></dd>
-            </div>
-            <div>
-              <dt>Office</dt>
-              <dd>Burnsville, Minnesota<br /><span class="muted">Street address coming soon</span></dd>
-            </div>
-            <div>
-              <dt>Hours</dt>
-              <dd>Monday to Friday, by appointment<br /><span class="muted">Evening calls available on request</span></dd>
-            </div>
+          <dl class="contact-card reveal">
+            <div><dt>Phone</dt><dd><a href="tel:9524328000">(952) 432-8000</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:david@sloanfs.com">david@sloanfs.com</a></dd></div>
+            <div><dt>Office</dt><dd>Burnsville, Minnesota<small>Street address coming soon</small></dd></div>
+            <div><dt>Hours</dt><dd>Mon to Fri, by appointment<small>Evening calls on request</small></dd></div>
           </dl>
         </div>
       </section>
@@ -560,7 +571,7 @@
         <div>
           <p class="footer-title">About</p>
           <ul>
-            <li><a href="#about">A note from David</a></li>
+            <li><a href="#about">Who we are</a></li>
             <li><a href="#team">Meet the team</a></li>
             <li><a href="#faq">Common questions</a></li>
             <li><a href="#" data-placeholder="client-login">Client login</a></li>

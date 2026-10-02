@@ -82,6 +82,27 @@
     });
   });
 
+  // "Who we serve" tabs.
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.serve-tab'));
+  function selectTab(tab) {
+    tabs.forEach(function (t) {
+      var selected = t === tab;
+      t.setAttribute('aria-selected', String(selected));
+      t.tabIndex = selected ? 0 : -1;
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (panel) panel.hidden = !selected;
+    });
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { selectTab(tab); });
+    tab.addEventListener('keydown', function (event) {
+      var next = null;
+      if (event.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+      if (event.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (next) { event.preventDefault(); selectTab(next); next.focus(); }
+    });
+  });
+
   // Subtle reveal on scroll for cards.
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var observer = new IntersectionObserver(function (entries) {
