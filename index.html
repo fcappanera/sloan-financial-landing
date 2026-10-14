@@ -17,15 +17,18 @@
     <meta property="og:description" content="Financial planning for Burnsville families and business owners, from a local team that knows your whole picture." />
     <meta property="og:image" content="/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=6" />
+    <link rel="stylesheet" href="styles.css?v=7" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -144,12 +147,8 @@
     <!-- Header -->
     <header class="site-header">
       <div class="container nav-wrap">
-        <a href="#main" class="brand" aria-label="Sloan Financial Solutions home">
-          <span class="brand-mark">S</span>
-          <span class="brand-text">
-            <strong>Sloan Financial Solutions</strong>
-            <small>Financial planning &amp; wealth management</small>
-          </span>
+        <a href="/" class="brand" aria-label="Sloan Financial Solutions home">
+          <img src="images/logo-horizontal-dark.png" alt="Sloan Financial Solutions LLC" class="brand-logo" width="420" height="230" />
         </a>
 
         <nav class="main-nav" id="main-nav" aria-label="Main navigation">
@@ -185,8 +184,8 @@
               <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="nav-menu" id="menu-about">
-              <a href="#about"><strong>Meet David</strong><span>Why he does this work</span></a>
-              <a href="#team"><strong>Our Team</strong><span>Burnsville and Barron offices</span></a>
+              <a href="our-story.html"><strong>Our Story</strong><span>Why David started Sloan in 2020</span></a>
+              <a href="our-story.html#team"><strong>Our Team</strong><span>Meet David, Adam, and Eric</span></a>
               <a href="#process"><strong>How We Work</strong><span>What to expect, step by step</span></a>
               <a href="#year"><strong>A Year with Sloan</strong><span>What we do together, month by month</span></a>
               <a href="#faq"><strong>FAQ</strong><span>Straight answers before you call</span></a>
@@ -241,7 +240,7 @@
           <p><strong>Locally owned</strong><span>An independent practice, not a call center</span></p>
           <p><strong>Two offices</strong><span>Burnsville, MN and Barron, WI</span></p>
           <p><strong>One plan</strong><span>Investing, taxes, and business under one roof</span></p>
-          <p><strong>All ages</strong><span>From first jobs to retirement and beyond</span></p>
+          <p><strong>Since 2020</strong><span>Clients from young kids to their 90s</span></p>
         </div>
       </section>
 
@@ -256,19 +255,21 @@
           </div>
           <div class="about-copy fx-up">
             <p class="eyebrow">Meet David Sloan</p>
-            <h2>"My main goal is to make sure my clients are taken care of in every part of their finances."</h2>
+            <h2>"There is infinitely more to your financial plan than how your IRA is performing."</h2>
             <p>
-              David works with clients of all ages and walks of life to find practical solutions for
-              their goals, whether that's investing for retirement, saving for college, protecting a
-              family, or planning what comes next for a business.
+              David started Sloan Financial Solutions in 2020 after seeing too many people with no plan,
+              no advisor, or an advisor who only talked about the one account he managed. His favorite
+              part of the job is helping someone finally answer the question they've been dreading for
+              years: "Can I retire?" "Can I buy a cabin?" "How do I pay off my loans?"
             </p>
             <p>
-              Outside the office you'll find him fishing for muskie and bass, hunting, mountain biking,
-              or on the golf course. He brings the same patience and attention to detail to your plan.
+              He grew up in Barron, Wisconsin, and lives in Burnsville with his wife, Amanda, their three
+              sons, and Brinkley, the family's Wheaten Terrier.
             </p>
+            <a href="our-story.html" class="text-cta">Read our story <span aria-hidden="true">&rarr;</span></a>
             <div class="signature-row">
               <span class="signature">David Sloan</span>
-              <span class="signature-caption">Owner, Sloan Financial Solutions</span>
+              <span class="signature-caption">Founder &amp; Financial Advisor</span>
             </div>
           </div>
         </div>
@@ -491,26 +492,28 @@
           <div class="section-head fx-up">
             <p class="eyebrow">Our team</p>
             <h2>The people you'll actually talk to.</h2>
+            <p class="section-sub">When you call in, you know us and we know you. No call center, no auto attendant.</p>
           </div>
 
           <div class="team-grid">
-            <article class="team-card fx-up">
+            <a class="team-card fx-up" href="our-story.html#david">
               <div class="team-photo"><span>DS</span></div>
               <h3>David Sloan</h3>
-              <p class="team-role">Owner &amp; Financial Advisor &middot; Burnsville</p>
-              <p class="team-contact"><a href="mailto:david@sloanfs.com">david@sloanfs.com</a></p>
-            </article>
-            <article class="team-card fx-up">
-              <div class="team-photo"><span>E</span></div>
-              <h3>Eric</h3>
-              <p class="team-role">Barron, WI office</p>
-              <p class="team-contact"><a href="mailto:eric@sloanfs.com">eric@sloanfs.com</a></p>
-            </article>
-            <article class="team-card team-card-soon fx-up">
-              <div class="team-photo"><span>+</span></div>
-              <h3>Growing team</h3>
-              <p class="team-role">New team members joining soon</p>
-            </article>
+              <p class="team-role">Founder &amp; Financial Advisor</p>
+              <p class="team-more">About David <span aria-hidden="true">&rarr;</span></p>
+            </a>
+            <a class="team-card fx-up" href="our-story.html#adam">
+              <div class="team-photo"><span>AS</span></div>
+              <h3>Adam SanFelippo</h3>
+              <p class="team-role">Tax &amp; Accounting Advisor</p>
+              <p class="team-more">About Adam <span aria-hidden="true">&rarr;</span></p>
+            </a>
+            <a class="team-card fx-up" href="our-story.html#eric">
+              <div class="team-photo"><span>EH</span></div>
+              <h3>Eric Holten</h3>
+              <p class="team-role">Financial Assistant</p>
+              <p class="team-more">About Eric <span aria-hidden="true">&rarr;</span></p>
+            </a>
           </div>
         </div>
       </section>
@@ -598,9 +601,8 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div>
-          <a href="#main" class="brand brand-footer" aria-label="Sloan Financial Solutions home">
-            <span class="brand-mark">S</span>
-            <span class="brand-text"><strong>Sloan Financial Solutions</strong></span>
+          <a href="/" class="brand brand-footer" aria-label="Sloan Financial Solutions home">
+            <img src="images/logo-horizontal-light.png" alt="Sloan Financial Solutions LLC" class="brand-logo" width="420" height="230" loading="lazy" />
           </a>
           <p class="footer-note">Serving Burnsville, Apple Valley, Eagan, Lakeville, Savage, Prior Lake, and Barron, WI.</p>
         </div>
@@ -616,8 +618,8 @@
         <div>
           <p class="footer-title">Firm</p>
           <ul>
-            <li><a href="#about">Meet David</a></li>
-            <li><a href="#team">Our team</a></li>
+            <li><a href="our-story.html">Our story</a></li>
+            <li><a href="our-story.html#team">Our team</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -649,6 +651,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=7"></script>
   </body>
 </html>

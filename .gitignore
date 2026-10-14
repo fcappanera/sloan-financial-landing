@@ -4,3 +4,14 @@ node_modules
 *.log
 Copia de metodo_ainnovate.md
 .env*
+# Source brand files from the client (not served)
+*.ai
+*.eps
+SFS Final.pdf
+SFS Original *.png
+Large Dark JPG.jpg
+Large White 300.JPG
+Small Dark.jpg
+Small White.JPG
+favicon_package_v0.16.zip
+.DS_Store
