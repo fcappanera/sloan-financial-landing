@@ -1882,3 +1882,87 @@ html.motion .ask-card img[data-reveal-img].in { opacity: 1; scale: 1; }
 .ask-card .ask-name { color: var(--navy) !important; font-weight: 500; }
 .compare-table th:first-child { width: 42%; }
 .compare-table th:nth-child(2) { width: 25%; }
+
+/* ==================================================================
+   v10: Fluidity pass
+   ================================================================== */
+
+/* Header never changes height (it used to push the page 12px). */
+.nav-wrap { transition: none; }
+.site-header.is-scrolled .nav-wrap { min-height: 78px; }
+.brand-logo { transform-origin: left center; transition: scale 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
+.site-header.is-scrolled .brand-logo { height: 64px; scale: 0.84; }
+.site-header { transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease; }
+@media (max-width: 960px) { .site-header.is-scrolled .brand-logo { height: 50px; scale: 1; } }
+@media (max-width: 640px) {
+  .site-header.is-scrolled .nav-wrap { min-height: 66px; }
+  .site-header.is-scrolled .brand-logo { height: 44px; }
+}
+
+/* No more per-frame repaints from scroll-linked effects. */
+.serve-card img, .compare-table tbody tr, .steps li::before { animation: none !important; }
+html.motion .story-logo img { animation: none; }
+.hero-contours, .contact-contours, .marquee-track { will-change: transform; }
+
+/* One easing everywhere: fast start, long soft landing. */
+:root { --ease: cubic-bezier(0.16, 1, 0.3, 1); --ease-io: cubic-bezier(0.65, 0, 0.35, 1); }
+
+html.motion [data-reveal] {
+  translate: 0 22px;
+  transition-property: opacity, translate, transform, box-shadow, border-color, background;
+  transition-duration: 0.85s, 0.85s, 0.4s, 0.3s, 0.3s, 0.3s;
+  transition-timing-function: var(--ease);
+  transition-delay: calc(min(var(--i, 0), 5) * 70ms), calc(min(var(--i, 0), 5) * 70ms), 0s, 0s, 0s, 0s;
+}
+/* Tilted cards used to lose their fade; give them both. */
+html.motion .person[data-reveal],
+html.motion a.team-card[data-reveal] {
+  transition-property: opacity, translate, transform, box-shadow, border-color;
+  transition-duration: 0.85s, 0.85s, 0.5s, 0.3s, 0.3s;
+}
+
+html.motion .split .wi { transition: translate 1s var(--ease); transition-delay: calc(var(--wi, 0) * 32ms); }
+html.motion .split .w-hl .wi { transition: translate 1s var(--ease), opacity 0.8s ease; transition-delay: calc(var(--wi, 0) * 32ms); }
+
+html.motion .hero-photo-frame[data-reveal-img],
+html.motion .portrait-photo[data-reveal-img],
+html.motion .serve-card img[data-reveal-img],
+html.motion .story-logo img[data-reveal-img],
+html.motion .compare-table[data-reveal-img] {
+  transition: clip-path 1.15s var(--ease-io), scale 0.9s var(--ease);
+}
+html.motion .person-photo[data-reveal-img],
+html.motion .team-photo[data-reveal-img],
+html.motion .ask-card img[data-reveal-img] { transition: opacity 0.8s ease, scale 1s var(--ease); }
+
+/* Table rows slide in one after another. */
+html.motion .compare-table tbody tr[data-reveal] { translate: 16px 0; }
+html.motion .compare-table tbody tr[data-reveal].in { translate: 0 0; }
+
+/* Step lines draw in once the step appears. */
+.steps li::before { transition: transform 0.9s var(--ease-io); }
+html:not(.motion) .steps li::before { transform: scaleX(1); }
+html.motion .steps li.in::before { transform: scaleX(1); transition-delay: calc(min(var(--i, 0), 5) * 70ms + 0.25s); }
+
+/* Composited hero drift with scroll (transform only). */
+@supports (animation-timeline: scroll()) {
+  html.motion .hero-photo-frame img {
+    animation: heroDrift linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 90vh;
+  }
+  @keyframes heroDrift { from { translate: 0 0; } to { translate: 0 7%; } }
+}
+.hero-photo-frame img { scale: 1.08; }
+
+/* Hover states share the same easing. */
+.service-card, .serve-card, .roots-card, .office-card, .faq-item, .year-stop-label, .card-link span, .text-cta span { transition-timing-function: var(--ease); }
+.serve-card img { transition: transform 1s var(--ease), clip-path 1.15s var(--ease-io); }
+.button { transition: background 0.3s ease, translate 0.45s var(--ease), box-shadow 0.3s ease; }
+.button:hover { transform: none; }
+.is-offscreen .marquee-track,
+.is-offscreen .hero-contours,
+.is-offscreen .contact-contours,
+.is-offscreen.status .status-dot::after,
+.is-offscreen .status-dot::after { animation-play-state: paused; }
+.is-offscreen.marquee .marquee-track { animation-play-state: paused; }

@@ -4,6 +4,21 @@
   var finePointer = window.matchMedia('(pointer: fine)').matches;
   var motion = root.classList.contains('motion') && !reduceMotion;
 
+  // Run pointer handlers at most once per frame.
+  function throttle(fn) {
+    var queued = false;
+    var lastEvent;
+    return function (e) {
+      lastEvent = e;
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        queued = false;
+        fn(lastEvent);
+      });
+    };
+  }
+
   var copyrightYear = document.getElementById('copyright-year');
   if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
 
@@ -12,7 +27,7 @@
   // ---------------------------------------------------------------
   var lenis = null;
   if (motion && finePointer && window.Lenis) {
-    lenis = new window.Lenis({ duration: 1.15, smoothWheel: true, anchors: { offset: -90 } });
+    lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 0.95, smoothWheel: true, anchors: { offset: -90 } });
     root.classList.add('has-lenis');
     var raf = function (time) {
       lenis.raf(time);
@@ -87,16 +102,17 @@
   // reveal when scrolling up. Mobile CTA bar appears after the hero.
   var mobileCta = document.querySelector('.mobile-cta');
   var lastY = window.scrollY;
+  var dirAcc = 0;
   var ticking = false;
   function onScroll() {
     var y = window.scrollY;
     if (header) {
       header.classList.toggle('is-scrolled', y > 40);
-      var goingDown = y > lastY + 4;
-      var goingUp = y < lastY - 4;
-      if (goingDown && y > 420 && !header.classList.contains('nav-open') && !header.querySelector('.nav-item.open')) {
+      var d = y - lastY;
+      dirAcc = (d > 0) === (dirAcc > 0) ? dirAcc + d : d;
+      if (dirAcc > 24 && y > 560 && !header.classList.contains('nav-open') && !header.querySelector('.nav-item.open')) {
         header.classList.add('is-hidden');
-      } else if (goingUp || y < 200) {
+      } else if (dirAcc < -24 || y < 240) {
         header.classList.remove('is-hidden');
       }
     }
@@ -217,7 +233,7 @@
       '.footer-grid > div', '.section-sub', '.section-head .eyebrow', '.about-copy > p, .about-copy > a, .signature-row',
       '.why-copy > p, .why-copy .signature-row', '.compare-copy > p', '.contact-head > p', '.quote-sub', '.ask-card',
       '.hero-copy > *:not(h1)', '.story-hero-copy > *:not(h1)',
-      '.year-panel', '.story-cta-actions', '.story-cta-inner > div > p'
+      '.year-panel', '.story-cta-actions', '.story-cta-inner > div > p', '.compare-table tbody tr'
     ];
     groups.forEach(function (sel) {
       var list = document.querySelectorAll(sel);
@@ -245,7 +261,7 @@
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
       document.querySelectorAll('[data-reveal], [data-reveal-img]').forEach(function (el) {
         var t = watchTarget(el);
         t.__revealTargets = t.__revealTargets || [];
@@ -308,19 +324,19 @@
     // 6. Magnetic primary buttons and hero parallax (mouse only).
     if (finePointer) {
       document.querySelectorAll('.button-primary, .button-nav').forEach(function (btn) {
-        btn.addEventListener('pointermove', function (e) {
+        btn.addEventListener('pointermove', throttle(function (e) {
           var r = btn.getBoundingClientRect();
           var x = (e.clientX - r.left - r.width / 2) / r.width;
           var y = (e.clientY - r.top - r.height / 2) / r.height;
-          btn.style.transform = 'translate(' + (x * 8).toFixed(1) + 'px,' + (y * 6).toFixed(1) + 'px)';
-        });
-        btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+          btn.style.translate = (x * 8).toFixed(1) + 'px ' + (y * 6).toFixed(1) + 'px';
+        }));
+        btn.addEventListener('pointerleave', function () { btn.style.translate = ''; });
       });
 
       var hero = document.querySelector('.hero, .story-hero');
       if (hero) {
         var layers = hero.querySelectorAll('[data-depth]');
-        hero.addEventListener('pointermove', function (e) {
+        hero.addEventListener('pointermove', throttle(function (e) {
           var r = hero.getBoundingClientRect();
           var x = (e.clientX - r.left) / r.width - 0.5;
           var y = (e.clientY - r.top) / r.height - 0.5;
@@ -328,7 +344,7 @@
             var d = parseFloat(l.getAttribute('data-depth'));
             l.style.translate = (x * d).toFixed(1) + 'px ' + (y * d).toFixed(1) + 'px';
           });
-        });
+        }));
         hero.addEventListener('pointerleave', function () {
           layers.forEach(function (l) { l.style.translate = ''; });
         });
@@ -336,13 +352,13 @@
 
       // Subtle 3D tilt on team cards.
       document.querySelectorAll('.person, .team-card').forEach(function (card) {
-        card.addEventListener('pointermove', function (e) {
+        card.addEventListener('pointermove', throttle(function (e) {
           var r = card.getBoundingClientRect();
           var x = (e.clientX - r.left) / r.width - 0.5;
           var y = (e.clientY - r.top) / r.height - 0.5;
-          card.style.setProperty('--rx', (-y * 4).toFixed(2) + 'deg');
-          card.style.setProperty('--ry', (x * 5).toFixed(2) + 'deg');
-        });
+          card.style.setProperty('--rx', (-y * 3).toFixed(2) + 'deg');
+          card.style.setProperty('--ry', (x * 4).toFixed(2) + 'deg');
+        }));
         card.addEventListener('pointerleave', function () {
           card.style.setProperty('--rx', '0deg');
           card.style.setProperty('--ry', '0deg');
@@ -352,15 +368,28 @@
   }
 
   // ---------------------------------------------------------------
+  // Pause looping animations while they are off screen.
+  // ---------------------------------------------------------------
+  if ('IntersectionObserver' in window) {
+    var loopers = document.querySelectorAll('.marquee, .hero, .story-hero, .contact, .quote-band, [data-status]');
+    var lio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('is-offscreen', !entry.isIntersecting);
+      });
+    }, { rootMargin: '100px 0px' });
+    loopers.forEach(function (el) { lio.observe(el); });
+  }
+
+  // ---------------------------------------------------------------
   // Service card spotlight follows the cursor
   // ---------------------------------------------------------------
   if (!reduceMotion) {
     document.querySelectorAll('.service-card').forEach(function (card) {
-      card.addEventListener('pointermove', function (event) {
+      card.addEventListener('pointermove', throttle(function (event) {
         var rect = card.getBoundingClientRect();
         card.style.setProperty('--mx', (event.clientX - rect.left) + 'px');
         card.style.setProperty('--my', (event.clientY - rect.top) + 'px');
-      });
+      }));
     });
   }
 
