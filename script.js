@@ -1,8 +1,25 @@
 (function () {
+  var root = document.documentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+  var motion = root.classList.contains('motion') && !reduceMotion;
 
   var copyrightYear = document.getElementById('copyright-year');
   if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
+
+  // ---------------------------------------------------------------
+  // Smooth inertial scrolling (desktop only)
+  // ---------------------------------------------------------------
+  var lenis = null;
+  if (motion && finePointer && window.Lenis) {
+    lenis = new window.Lenis({ duration: 1.15, smoothWheel: true, anchors: { offset: -90 } });
+    root.classList.add('has-lenis');
+    var raf = function (time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
 
   // ---------------------------------------------------------------
   // Navigation: dropdowns and mobile drawer
@@ -37,6 +54,7 @@
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     if (!open) closeMenus();
+    if (lenis) open ? lenis.stop() : lenis.start();
   }
 
   if (toggle) {
@@ -57,7 +75,7 @@
   });
 
   if (nav) {
-    nav.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    nav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         setDrawer(false);
         closeMenus();
@@ -65,14 +83,34 @@
     });
   }
 
-  // Header condenses after scrolling a little.
-  if (header) {
-    var onScroll = function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 40);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+  // Header: condense after a little scroll, hide while scrolling down,
+  // reveal when scrolling up. Mobile CTA bar appears after the hero.
+  var mobileCta = document.querySelector('.mobile-cta');
+  var lastY = window.scrollY;
+  var ticking = false;
+  function onScroll() {
+    var y = window.scrollY;
+    if (header) {
+      header.classList.toggle('is-scrolled', y > 40);
+      var goingDown = y > lastY + 4;
+      var goingUp = y < lastY - 4;
+      if (goingDown && y > 420 && !header.classList.contains('nav-open') && !header.querySelector('.nav-item.open')) {
+        header.classList.add('is-hidden');
+      } else if (goingUp || y < 200) {
+        header.classList.remove('is-hidden');
+      }
+    }
+    if (mobileCta) mobileCta.classList.toggle('is-visible', y > window.innerHeight * 0.7);
+    lastY = y;
+    ticking = false;
   }
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(onScroll);
+    }
+  }, { passive: true });
+  onScroll();
 
   // ---------------------------------------------------------------
   // Live office status (Central time, Mon to Fri 9:00 to 4:30)
@@ -101,28 +139,217 @@
     if (!now) return;
     var weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
     var isWeekday = weekdays.indexOf(now.day) !== -1;
-    var open = 9 * 60;
-    var close = 16 * 60 + 30;
-    var isOpen = isWeekday && now.minutes >= open && now.minutes < close;
+    var isOpen = isWeekday && now.minutes >= 540 && now.minutes < 990;
     var text;
-    if (isOpen) {
-      text = 'Open now · until 4:30 pm';
-    } else if (isWeekday && now.minutes < open) {
-      text = 'Closed · opens today at 9:00 am';
-    } else if (now.day === 'Fri' || now.day === 'Sat' || now.day === 'Sun') {
-      text = 'Closed · opens Monday at 9:00 am';
-    } else {
-      text = 'Closed · opens tomorrow at 9:00 am';
-    }
+    if (isOpen) text = 'Open now · until 4:30 pm';
+    else if (isWeekday && now.minutes < 540) text = 'Closed · opens today at 9:00 am';
+    else if (now.day === 'Fri' || now.day === 'Sat' || now.day === 'Sun') text = 'Closed · opens Monday at 9:00 am';
+    else text = 'Closed · opens tomorrow at 9:00 am';
     document.querySelectorAll('[data-status]').forEach(function (el) {
       el.classList.toggle('is-open', isOpen);
       var label = el.querySelector('.status-text');
       if (label) label.textContent = text;
     });
   }
-
   updateStatus();
   setInterval(updateStatus, 60000);
+
+  // ---------------------------------------------------------------
+  // Motion system. Everything stays visible unless JS + motion are on.
+  // ---------------------------------------------------------------
+  if (motion) {
+    // 1. Split headings into words for a masked line reveal.
+    var headingSel = [
+      '.hero-copy h1', '.story-hero h1', '.section-head h2', '.about-copy h2', '.why-copy h2',
+      '.compare-copy h2', '.faq-head h2', '.contact-head h2', '.big-quote p', '.story-cta-inner h2'
+    ].join(',');
+
+    var wordIndex;
+    var wrapWords = function (node, parent) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              frag.appendChild(document.createTextNode(part));
+              return;
+            }
+            var outer = document.createElement('span');
+            outer.className = 'w';
+            var inner = document.createElement('span');
+            inner.className = 'wi';
+            inner.style.setProperty('--wi', wordIndex++);
+            inner.textContent = part;
+            outer.appendChild(inner);
+            frag.appendChild(outer);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1 && child.tagName !== 'svg' && child.tagName !== 'BR') {
+          if (child.classList.contains('hl')) {
+            // Keep the underlined phrase together so its SVG stays aligned.
+            var outer = document.createElement('span');
+            outer.className = 'w w-hl';
+            var inner = document.createElement('span');
+            inner.className = 'wi';
+            inner.style.setProperty('--wi', wordIndex++);
+            child.parentNode.insertBefore(outer, child);
+            inner.appendChild(child);
+            outer.appendChild(inner);
+          } else {
+            wrapWords(child);
+          }
+        }
+      });
+    };
+
+    document.querySelectorAll(headingSel).forEach(function (h) {
+      wordIndex = 0;
+      wrapWords(h);
+      h.classList.add('split');
+      h.setAttribute('data-reveal', '');
+    });
+
+    // 2. Generic reveal targets, staggered inside their group.
+    var groups = [
+      '.trust-row p', '.service-card', '.serve-card', '.steps li', '.team-card', '.person', '.roots-card',
+      '.promise', '.chapter-list li', '.faq-item', '.office-card', '.map-card', '.story-facts p', '.year-stop',
+      '.footer-grid > div', '.section-sub', '.section-head .eyebrow', '.about-copy > p, .about-copy > a, .signature-row',
+      '.why-copy > p, .why-copy .signature-row', '.compare-copy > p', '.contact-head > p', '.quote-sub', '.ask-card',
+      '.hero-copy > *:not(h1)', '.story-hero-copy > *:not(h1)',
+      '.year-panel', '.story-cta-actions', '.story-cta-inner > div > p'
+    ];
+    groups.forEach(function (sel) {
+      var list = document.querySelectorAll(sel);
+      list.forEach(function (el, i) {
+        if (el.hasAttribute('data-reveal')) return;
+        el.setAttribute('data-reveal', '');
+        el.style.setProperty('--i', i % 6);
+      });
+    });
+
+    // 3. Image mask reveals.
+    document.querySelectorAll('.hero-photo-frame, .portrait-photo, .serve-card img, .team-photo, .person-photo, .story-logo img, .ask-card img, .compare-table')
+      .forEach(function (el) { el.setAttribute('data-reveal-img', ''); });
+
+    var reveal = function (el) { el.classList.add('in'); };
+    // Clipped images report no intersection, so watch their parent instead.
+    var watchTarget = function (el) {
+      return el.hasAttribute('data-reveal-img') && el.parentElement ? el.parentElement : el;
+    };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            (entry.target.__revealTargets || [entry.target]).forEach(reveal);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('[data-reveal], [data-reveal-img]').forEach(function (el) {
+        var t = watchTarget(el);
+        t.__revealTargets = t.__revealTargets || [];
+        if (t === el && t.__revealTargets.indexOf(el) === -1) t.__revealTargets.push(el);
+        if (t !== el) t.__revealTargets.push(el);
+        io.observe(t);
+      });
+    } else {
+      document.querySelectorAll('[data-reveal], [data-reveal-img]').forEach(reveal);
+    }
+
+    // Safety net: anything already above the fold on load is revealed at once.
+    requestAnimationFrame(function () {
+      document.querySelectorAll('[data-reveal], [data-reveal-img]').forEach(function (el) {
+        var r = watchTarget(el).getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) reveal(el);
+      });
+    });
+
+    // 4. Count-up numbers.
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var from = parseInt(el.getAttribute('data-count-from') || '0', 10);
+      var done = false;
+      var run = function () {
+        if (done) return;
+        done = true;
+        var start = null;
+        var dur = 1400;
+        var step = function (t) {
+          if (!start) start = t;
+          var p = Math.min(1, (t - start) / dur);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(from + (target - from) * eased);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        el.textContent = from;
+        requestAnimationFrame(step);
+      };
+      if ('IntersectionObserver' in window) {
+        var cio = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { run(); cio.disconnect(); }
+        }, { threshold: 0.6 });
+        cio.observe(el);
+      }
+    });
+
+    // 5. Timeline: light up chapters one after another.
+    var chapters = document.querySelector('.chapter-list');
+    if (chapters && 'IntersectionObserver' in window) {
+      var tio = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          chapters.classList.add('is-lit');
+          tio.disconnect();
+        }
+      }, { threshold: 0.35 });
+      tio.observe(chapters);
+    }
+
+    // 6. Magnetic primary buttons and hero parallax (mouse only).
+    if (finePointer) {
+      document.querySelectorAll('.button-primary, .button-nav').forEach(function (btn) {
+        btn.addEventListener('pointermove', function (e) {
+          var r = btn.getBoundingClientRect();
+          var x = (e.clientX - r.left - r.width / 2) / r.width;
+          var y = (e.clientY - r.top - r.height / 2) / r.height;
+          btn.style.transform = 'translate(' + (x * 8).toFixed(1) + 'px,' + (y * 6).toFixed(1) + 'px)';
+        });
+        btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+      });
+
+      var hero = document.querySelector('.hero, .story-hero');
+      if (hero) {
+        var layers = hero.querySelectorAll('[data-depth]');
+        hero.addEventListener('pointermove', function (e) {
+          var r = hero.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - 0.5;
+          var y = (e.clientY - r.top) / r.height - 0.5;
+          layers.forEach(function (l) {
+            var d = parseFloat(l.getAttribute('data-depth'));
+            l.style.translate = (x * d).toFixed(1) + 'px ' + (y * d).toFixed(1) + 'px';
+          });
+        });
+        hero.addEventListener('pointerleave', function () {
+          layers.forEach(function (l) { l.style.translate = ''; });
+        });
+      }
+
+      // Subtle 3D tilt on team cards.
+      document.querySelectorAll('.person, .team-card').forEach(function (card) {
+        card.addEventListener('pointermove', function (e) {
+          var r = card.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - 0.5;
+          var y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.setProperty('--rx', (-y * 4).toFixed(2) + 'deg');
+          card.style.setProperty('--ry', (x * 5).toFixed(2) + 'deg');
+        });
+        card.addEventListener('pointerleave', function () {
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
+        });
+      });
+    }
+  }
 
   // ---------------------------------------------------------------
   // Service card spotlight follows the cursor
@@ -146,16 +373,12 @@
     var start = new Date(today.getFullYear(), 0, 1);
     var end = new Date(today.getFullYear() + 1, 0, 1);
     var progress = (today - start) / (end - start);
-
     var setProgress = function () { track.style.setProperty('--progress', progress.toFixed(4)); };
     if ('IntersectionObserver' in window && !reduceMotion) {
-      var io = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) {
-          setProgress();
-          io.disconnect();
-        }
+      var yio = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { setProgress(); yio.disconnect(); }
       }, { threshold: 0.4 });
-      io.observe(track);
+      yio.observe(track);
     } else {
       setProgress();
     }
@@ -164,7 +387,6 @@
     var panel = track.querySelector('.year-panel');
     var title = track.querySelector('.year-panel-title');
     var text = track.querySelector('.year-panel-text');
-
     var select = function (stop, focus) {
       stops.forEach(function (s) {
         var on = s === stop;
@@ -178,15 +400,12 @@
       panel.classList.add('is-swapping');
       if (focus) stop.focus();
     };
-
-    // Start on the milestone closest to today.
     var month = today.getMonth() + 1;
     var current = stops[0];
     stops.forEach(function (s) {
       if (parseFloat(s.style.getPropertyValue('--m')) <= month + 0.5) current = s;
     });
     select(current, false);
-
     stops.forEach(function (stop, i) {
       stop.addEventListener('click', function () { select(stop, false); });
       stop.addEventListener('keydown', function (event) {

@@ -25,7 +25,8 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=8" />
+    <link rel="stylesheet" href="styles.css?v=9" />
+    <script>document.documentElement.classList.add("js");if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion");</script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -134,7 +135,7 @@
 <main id="main">
       <!-- Page hero -->
       <section class="story-hero">
-        <img src="images/contours.svg" class="hero-contours" alt="" aria-hidden="true" width="900" height="700" />
+        <img src="images/contours.svg" data-depth="-24" class="hero-contours" alt="" aria-hidden="true" width="900" height="700" />
         <div class="container story-hero-grid">
           <div class="story-hero-copy">
             <p class="eyebrow">Our story</p>
@@ -145,12 +146,12 @@
               from Burnsville, Minnesota to Barron, Wisconsin.
             </p>
             <div class="story-facts">
-              <p><strong>2020</strong><span>Founded</span></p>
-              <p><strong>2</strong><span>Offices: Burnsville &amp; Barron</span></p>
-              <p><strong>3</strong><span>People who know your name</span></p>
+              <p><strong data-count="2020" data-count-from="2000">2020</strong><span>Founded</span></p>
+              <p><strong data-count="2">2</strong><span>Offices: Burnsville &amp; Barron</span></p>
+              <p><strong data-count="3">3</strong><span>People who know your name</span></p>
             </div>
           </div>
-          <figure class="story-logo">
+          <figure class="story-logo" data-depth="10">
             <img src="images/logo-stacked-dark.png" alt="Sloan Financial Solutions logo, with the outlines of Minnesota and Wisconsin" width="640" height="706" />
             <figcaption>Look closely at our logo: Minnesota and Wisconsin, side by side, just like our two offices.</figcaption>
           </figure>
@@ -198,13 +199,14 @@
       <!-- Name + hometowns -->
       <section class="roots section">
         <div class="container">
-          <div class="section-head fx-up">
+          <div class="section-head">
             <p class="eyebrow">Where we come from</p>
             <h2>A plain name, and two places we call home.</h2>
+            <p class="section-sub">Nothing flashy. Just a name that says what we do, and offices in the two towns that shaped us.</p>
           </div>
 
           <div class="roots-grid">
-            <article class="roots-card fx-up">
+            <article class="roots-card">
               <span class="roots-kicker">The name</span>
               <h3>Why "Solutions"?</h3>
               <p>
@@ -215,7 +217,7 @@
               </p>
             </article>
 
-            <article class="roots-card roots-card-mn fx-up">
+            <article class="roots-card roots-card-mn">
               <span class="roots-kicker">Burnsville, Minnesota</span>
               <h3>Our home and our community.</h3>
               <p>
@@ -226,7 +228,7 @@
               <p class="roots-address">12301 Nicollet Ave, Suite 101</p>
             </article>
 
-            <article class="roots-card roots-card-wi fx-up">
+            <article class="roots-card roots-card-wi">
               <span class="roots-kicker">Barron, Wisconsin</span>
               <h3>Where it all started.</h3>
               <p>
@@ -242,7 +244,7 @@
       <!-- Timeline -->
       <section class="chapters section">
         <div class="container">
-          <div class="section-head fx-up">
+          <div class="section-head">
             <p class="eyebrow">Take the chance</p>
             <h2>Every chapter started with someone taking a chance.</h2>
             <p class="section-sub">
@@ -291,7 +293,7 @@
         <img src="images/contours-light.svg" class="contact-contours" alt="" aria-hidden="true" width="1400" height="700" />
         <div class="container quote-inner">
           <p class="eyebrow eyebrow-light">Who we serve</p>
-          <blockquote class="big-quote fx-up">
+          <blockquote class="big-quote">
             <p>"People ask me who we serve best. I always answer the same way: <em>nice people.</em>"</p>
           </blockquote>
           <p class="quote-sub">
@@ -305,22 +307,23 @@
       <!-- Commitments -->
       <section class="promises section">
         <div class="container">
-          <div class="section-head fx-up">
+          <div class="section-head">
             <p class="eyebrow">What working with us feels like</p>
             <h2>Friendly, familiar, and focused on your whole plan.</h2>
+            <p class="section-sub">Our goal is simple: you should sleep easy at night knowing your whole financial plan is taken care of.</p>
           </div>
           <div class="promise-grid">
-            <article class="promise fx-up">
+            <article class="promise">
               <span class="promise-num">01</span>
               <h3>You know us, and we know you.</h3>
               <p>No call center and no auto attendant. When you call in, you talk to the people who know your plan.</p>
             </article>
-            <article class="promise fx-up">
+            <article class="promise">
               <span class="promise-num">02</span>
               <h3>Holistic planners, not just asset managers.</h3>
               <p>Retirement, investments, insurance, college, taxes, and your business all belong in the same conversation.</p>
             </article>
-            <article class="promise fx-up">
+            <article class="promise">
               <span class="promise-num">03</span>
               <h3>If it's not us, we know who.</h3>
               <p>When a need falls outside what we do, we connect you with trusted professionals to get it taken care of.</p>
@@ -332,7 +335,7 @@
       <!-- Team -->
       <section id="team" class="people section">
         <div class="container">
-          <div class="section-head center fx-up">
+          <div class="section-head center">
             <p class="eyebrow">Our team</p>
             <h2>Built on relationships. Driven by problem solving.</h2>
             <p class="section-sub">Click "About" and "Fun to know" to meet each of us.</p>
@@ -340,13 +343,14 @@
 
           <div class="people-grid">
             <!-- David -->
-            <article class="person fx-up" id="david">
+            <article class="person" id="david">
               <div class="person-photo">
                 <img src="images/team-david.jpg" alt="David Sloan" width="235" height="235" loading="lazy" />
                 <span class="person-emoji" title="Most-used emoji" aria-label="Most-used emoji: tears of joy">😂</span>
               </div>
               <h3>David Sloan</h3>
               <p class="person-role">Founder &amp; Financial Advisor</p>
+              <p class="person-sub">Statistics &amp; Finance, UW&ndash;La Crosse</p>
               <p class="person-office">Burnsville, MN &middot; <a href="mailto:david@sloanfs.com">david@sloanfs.com</a></p>
 
               <details class="person-acc">
@@ -389,14 +393,15 @@
             </article>
 
             <!-- Adam -->
-            <article class="person fx-up" id="adam">
+            <article class="person" id="adam">
               <div class="person-photo">
                 <img src="images/team-adam.jpg" alt="Adam SanFelippo" width="360" height="360" loading="lazy" />
                 <span class="person-emoji" title="Most-used emoji" aria-label="Most-used emoji: neutral face">😐</span>
               </div>
               <h3>Adam SanFelippo</h3>
               <p class="person-role">Tax &amp; Accounting Advisor</p>
-              <p class="person-office">Tax services</p>
+              <p class="person-sub">Mathematics &amp; Statistics, UW&ndash;La Crosse</p>
+              <p class="person-office">Tax &amp; accounting services</p>
 
               <details class="person-acc">
                 <summary>About Adam</summary>
@@ -440,7 +445,7 @@
             </article>
 
             <!-- Eric -->
-            <article class="person fx-up" id="eric">
+            <article class="person" id="eric">
               <div class="person-photo">
                 <img src="images/team-eric.jpg" alt="Eric Holten" width="270" height="270" loading="lazy" />
                 <span class="person-emoji" title="Most-used emoji" aria-label="Most-used emoji: tears of joy">😂</span>
@@ -495,7 +500,7 @@
 
       <!-- CTA -->
       <section class="story-cta section">
-        <div class="container story-cta-inner fx-up">
+        <div class="container story-cta-inner">
           <div>
             <p class="eyebrow">Let's meet</p>
             <h2>Bring us the question you've been putting off.</h2>
@@ -562,7 +567,12 @@
         <p class="copyright">&copy; <span id="copyright-year">2026</span> Sloan Financial Solutions LLC</p>
       </div>
     </footer>
+    <div class="mobile-cta" aria-label="Quick contact">
+      <a href="tel:9524328000" class="mobile-cta-call">Call</a>
+      <a href="/#contact" class="mobile-cta-book">Schedule a conversation</a>
+    </div>
 
-    <script src="script.js?v=8"></script>
+    <script src="vendor/lenis.min.js" defer></script>
+    <script src="script.js?v=9" defer></script>
   </body>
 </html>
