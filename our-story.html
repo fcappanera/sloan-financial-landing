@@ -25,7 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=7" />
+    <link rel="stylesheet" href="styles.css?v=8" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -161,9 +161,8 @@
       <section class="why section">
         <div class="container why-grid">
           <aside class="why-aside">
-            <div class="portrait portrait-sm" role="img" aria-label="Portrait of David Sloan, coming soon">
-              <span>DS</span>
-              <small>Photo coming soon</small>
+            <div class="portrait portrait-sm portrait-photo">
+              <img src="images/portrait-david.jpg" alt="David Sloan, founder of Sloan Financial Solutions" width="235" height="307" />
             </div>
             <p class="why-aside-name">David Sloan</p>
             <p class="why-aside-role">Founder &amp; Financial Advisor</p>
@@ -273,6 +272,11 @@
               <h3>Sloan Financial Solutions</h3>
               <p>David opens his own practice, built around holistic planning rather than a single account.</p>
             </li>
+            <li class="fx-up">
+              <span class="chapter-when">2022</span>
+              <h3>Back home in Barron</h3>
+              <p>Eric Holten, one of David's best friends and a fellow Barron native, joins to run the new Barron office.</p>
+            </li>
             <li class="fx-up chapter-now">
               <span class="chapter-when">Today</span>
               <h3>Planning and taxes, together</h3>
@@ -338,7 +342,7 @@
             <!-- David -->
             <article class="person fx-up" id="david">
               <div class="person-photo">
-                <div class="avatar" role="img" aria-label="Photo of David Sloan coming soon"><span>DS</span></div>
+                <img src="images/team-david.jpg" alt="David Sloan" width="235" height="235" loading="lazy" />
                 <span class="person-emoji" title="Most-used emoji" aria-label="Most-used emoji: tears of joy">😂</span>
               </div>
               <h3>David Sloan</h3>
@@ -387,7 +391,7 @@
             <!-- Adam -->
             <article class="person fx-up" id="adam">
               <div class="person-photo">
-                <div class="avatar" role="img" aria-label="Photo of Adam SanFelippo coming soon"><span>AS</span></div>
+                <img src="images/team-adam.jpg" alt="Adam SanFelippo" width="360" height="360" loading="lazy" />
                 <span class="person-emoji" title="Most-used emoji" aria-label="Most-used emoji: neutral face">😐</span>
               </div>
               <h3>Adam SanFelippo</h3>
@@ -438,28 +442,51 @@
             <!-- Eric -->
             <article class="person fx-up" id="eric">
               <div class="person-photo">
-                <div class="avatar" role="img" aria-label="Photo of Eric Holten coming soon"><span>EH</span></div>
+                <img src="images/team-eric.jpg" alt="Eric Holten" width="270" height="270" loading="lazy" />
+                <span class="person-emoji" title="Most-used emoji" aria-label="Most-used emoji: tears of joy">😂</span>
               </div>
               <h3>Eric Holten</h3>
               <p class="person-role">Financial Assistant</p>
+              <p class="person-sub">Life &amp; Health Insurance Agent</p>
               <p class="person-office">Barron, WI &middot; <a href="mailto:eric@sloanfs.com">eric@sloanfs.com</a></p>
 
               <details class="person-acc">
                 <summary>About Eric</summary>
                 <div class="acc-body">
                   <p>
-                    Eric supports clients and keeps the day-to-day running smoothly from our Barron,
-                    Wisconsin office. His full profile is on its way.
+                    Eric joined Sloan Financial Solutions in April 2022 to help manage the new Barron office.
+                    Before that, he was a Regional Sales Manager for a large food processing parts and
+                    equipment company, traveling the country to work with plant managers, owners, and
+                    industry leaders.
                   </p>
-                  <p class="acc-soon">Profile coming soon</p>
+                  <p>
+                    With two kids under four at the time, he wanted to be home for the everyday moments. David,
+                    one of his best friends and a fellow Barron native, was growing the business. "It felt like
+                    the right opportunity at the right time."
+                  </p>
+                  <p>
+                    Eric helps people understand what's possible and build a plan unique to their situation,
+                    whether they're just getting started, turning goals into reality in their middle years, or
+                    preparing for retirement. "The real reward is sitting across the table from someone,
+                    understanding what matters to them, and helping them build a plan to get there."
+                  </p>
+                  <p>
+                    He earned a bachelor's degree in Business Management from UW&ndash;Eau Claire. Eric grew up just
+                    south of Barron and lives outside Prairie Farm with his wife, Kaitlin, and their kids, Emmy and
+                    Teddy. He's passionate about archery hunting and land management, coaches the Barron Varsity
+                    Boys basketball team, and still plays sand volleyball with Kaitlin in leagues and tournaments.
+                  </p>
                 </div>
               </details>
 
               <details class="person-acc">
                 <summary>Fun to know</summary>
-                <div class="acc-body">
-                  <p class="acc-soon">Coming soon</p>
-                </div>
+                <dl class="acc-body fun">
+                  <div><dt>Favorite time of year</dt><dd>Mid-September through November. "It's hunting season!"</dd></div>
+                  <div><dt>Life's theme song</dt><dd><span class="song">&#9835; "Buy Dirt," Jordan Davis</span></dd></div>
+                  <div><dt>His kids say he's good at</dt><dd>"Shooting deer, teaching basketball, playing volleyball at Chetek and the Waupaca Boatride Tournament, and trim boards." &mdash; Emmy, 7<br /><br />"Looking to find deer and shooting deer." Anything else? "Nope." &mdash; Teddy, 5</dd></div>
+                  <div><dt>Most-used emoji</dt><dd class="emoji-answer">😂 <span class="emoji-note">"Definitely the laugh crying emoji."</span></dd></div>
+                </dl>
               </details>
             </article>
           </div>
@@ -536,6 +563,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=7"></script>
+    <script src="script.js?v=8"></script>
   </body>
 </html>
