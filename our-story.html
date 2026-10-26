@@ -25,7 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=10" />
+    <link rel="stylesheet" href="styles.css?v=11" />
     <script>document.documentElement.classList.add("js");if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion");</script>
     <script type="application/ld+json">
       {
@@ -85,12 +85,22 @@
               Services
               <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <div class="nav-menu" id="menu-services">
-              <a href="/#services"><strong>Financial Planning</strong><span>Retirement, insurance, and long-term goals</span></a>
-              <a href="/#services"><strong>Investment Management</strong><span>Portfolios built around your plan</span></a>
-              <a href="/#services"><strong>College Savings</strong><span>529 plans and UTMA accounts</span></a>
-              <a href="/#services"><strong>Tax Services</strong><span>Preparation and planning, coordinated with your plan</span></a>
-              <a href="/#services"><strong>Business Services</strong><span>401(k), profit-sharing, and succession</span></a>
+            <div class="nav-menu nav-menu-wide" id="menu-services">
+              <div class="nav-col">
+                <p class="nav-col-title">Financial services</p>
+                <a href="/#svc-holistic"><strong>Holistic Financial Planning</strong><span>Your financial quarterback</span></a>
+                <a href="/#svc-roth"><strong>Roth IRAs</strong><span>Build wealth</span></a>
+                <a href="/#svc-rollovers"><strong>Rollovers</strong><span>Organize wealth</span></a>
+                <a href="/#svc-minors"><strong>Saving for Minors</strong><span>529s and UTMAs</span></a>
+                <a href="/#svc-estate"><strong>Estate Planning</strong><span>Transfer wealth</span></a>
+              </div>
+              <div class="nav-col">
+                <p class="nav-col-title">Tax &amp; accounting</p>
+                <a href="/#svc-taxprep"><strong>Tax Preparation</strong><span>Individuals and businesses</span></a>
+                <a href="/#svc-taxstrategy"><strong>Tax Planning</strong><span>Year-round strategy</span></a>
+                <a href="/#svc-bookkeeping"><strong>Bookkeeping</strong><span>For small businesses</span></a>
+                <a href="/#svc-bookkeeping-plus"><strong>Bookkeeping Plus</strong><span>Your outsourced CFO</span></a>
+              </div>
             </div>
           </div>
 
@@ -99,11 +109,7 @@
               Who We Serve
               <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <div class="nav-menu" id="menu-serve">
-              <a href="/#serve"><strong>Families</strong><span>Saving, protecting, and planning ahead</span></a>
-              <a href="/#serve"><strong>Business Owners</strong><span>Your business and your retirement, together</span></a>
-              <a href="/#serve"><strong>Pre-retirees &amp; Retirees</strong><span>Turning savings into reliable income</span></a>
-            </div>
+            <div class="nav-menu nav-menu-list" id="menu-serve"><a href="/#serve"><strong>Near-Retirees</strong></a><a href="/#serve"><strong>Retirees</strong></a><a href="/#serve"><strong>Career Changers</strong></a><a href="/#serve"><strong>Young Professionals</strong></a><a href="/#serve"><strong>Families &amp; Parents</strong></a><a href="/#serve"><strong>Business Owners</strong></a><a href="/#serve"><strong>Recent Inheritance Recipients</strong></a><a href="/#serve"><strong>Legacy Builders</strong></a></div>
           </div>
 
           <div class="nav-item has-menu">
@@ -401,7 +407,7 @@
               <h3>Adam SanFelippo</h3>
               <p class="person-role">Tax &amp; Accounting Advisor</p>
               <p class="person-sub">Mathematics &amp; Statistics, UW&ndash;La Crosse</p>
-              <p class="person-office">Tax &amp; accounting services</p>
+              <p class="person-office">Milwaukee, WI &middot; <a href="mailto:adam@sloanfs.com">adam@sloanfs.com</a></p>
 
               <details class="person-acc">
                 <summary>About Adam</summary>
@@ -521,7 +527,7 @@
           <a href="/" class="brand brand-footer" aria-label="Sloan Financial Solutions home">
             <img decoding="async" src="images/logo-horizontal-light.png" alt="Sloan Financial Solutions LLC" class="brand-logo" width="420" height="230" loading="lazy" />
           </a>
-          <p class="footer-note">Serving Burnsville, Apple Valley, Eagan, Lakeville, Savage, Prior Lake, and Barron, WI.</p>
+          <p class="footer-note">Serving Burnsville, Apple Valley, Eagan, Savage, Prior Lake, Lakeville, and Shakopee in Minnesota, and Barron, Rice Lake, Cameron, Chetek, Spooner, Cumberland, and Hayward in Wisconsin.</p>
         </div>
         <div>
           <p class="footer-title">Services</p>
@@ -573,6 +579,6 @@
     </div>
 
     <script src="vendor/lenis.min.js" defer></script>
-    <script src="script.js?v=10" defer></script>
+    <script src="script.js?v=11" defer></script>
   </body>
 </html>

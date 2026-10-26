@@ -28,7 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=10" />
+    <link rel="stylesheet" href="styles.css?v=11" />
     <script>document.documentElement.classList.add("js");if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion");</script>
     <script type="application/ld+json">
       {
@@ -56,7 +56,7 @@
           "closes": "16:30"
         },
         "founder": { "@type": "Person", "name": "David Sloan", "jobTitle": "Financial Advisor" },
-        "areaServed": ["Burnsville MN", "Apple Valley MN", "Eagan MN", "Lakeville MN", "Savage MN", "Prior Lake MN", "Barron WI"],
+        "areaServed": ["Burnsville MN", "Apple Valley MN", "Eagan MN", "Savage MN", "Prior Lake MN", "Lakeville MN", "Shakopee MN", "Barron WI", "Rice Lake WI", "Cameron WI", "Chetek WI", "Spooner WI", "Cumberland WI", "Hayward WI"],
         "sameAs": [
           "https://www.linkedin.com/company/sloan-financial-solutions-llc/about/",
           "https://www.facebook.com/profile.php?id=100074323628094"
@@ -89,12 +89,12 @@
           {
             "@type": "Question",
             "name": "Why work with a local financial advisor in Burnsville?",
-            "acceptedAnswer": { "@type": "Answer", "text": "You get to sit down face to face with the person managing your plan, in an office close to home. Sloan Financial Solutions works with families and business owners across Burnsville, Apple Valley, Eagan, Lakeville, Savage, and Prior Lake, and meets by video when that is easier." }
+            "acceptedAnswer": { "@type": "Answer", "text": "You get to sit down face to face with the person managing your plan, in an office close to home. Sloan Financial Solutions works with families and business owners across Burnsville, Apple Valley, Eagan, Savage, Prior Lake, Lakeville, and Shakopee, and meets by video when that is easier." }
           },
           {
             "@type": "Question",
             "name": "Do you have a financial advisor office in Barron, WI?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sloan Financial Solutions has an office at 421 E La Salle Ave, Suite A in Barron, Wisconsin, run by Eric Holten, a Barron native. Call (715) 418-2044 to meet in person." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sloan Financial Solutions has an office at 421 E La Salle Ave, Suite A in Barron, Wisconsin, run by Eric Holten, a Barron native, serving Rice Lake, Cameron, Chetek, Spooner, Cumberland, and Hayward. Call (715) 418-2044 to meet in person." }
           },
           {
             "@type": "Question",
@@ -110,6 +110,11 @@
             "@type": "Question",
             "name": "Can you help with my business retirement plan?",
             "acceptedAnswer": { "@type": "Answer", "text": "Yes. We help business owners set up and manage 401(k) plans, small business retirement plans, profit-sharing plans, and deferred compensation, and we plan for succession or the sale of the business." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer bookkeeping for small businesses?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sloan Financial Solutions handles income, expenses, invoices, payroll, and cash flow tracking for small businesses, and Bookkeeping Plus adds financial reporting and strategic advice, like an outsourced CFO." }
           },
           {
             "@type": "Question",
@@ -163,12 +168,22 @@
               Services
               <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <div class="nav-menu" id="menu-services">
-              <a href="#services"><strong>Financial Planning</strong><span>Retirement, insurance, and long-term goals</span></a>
-              <a href="#services"><strong>Investment Management</strong><span>Portfolios built around your plan</span></a>
-              <a href="#services"><strong>College Savings</strong><span>529 plans and UTMA accounts</span></a>
-              <a href="#services"><strong>Tax Services</strong><span>Preparation and planning, coordinated with your plan</span></a>
-              <a href="#services"><strong>Business Services</strong><span>401(k), profit-sharing, and succession</span></a>
+            <div class="nav-menu nav-menu-wide" id="menu-services">
+              <div class="nav-col">
+                <p class="nav-col-title">Financial services</p>
+                <a href="#svc-holistic"><strong>Holistic Financial Planning</strong><span>Your financial quarterback</span></a>
+                <a href="#svc-roth"><strong>Roth IRAs</strong><span>Build wealth</span></a>
+                <a href="#svc-rollovers"><strong>Rollovers</strong><span>Organize wealth</span></a>
+                <a href="#svc-minors"><strong>Saving for Minors</strong><span>529s and UTMAs</span></a>
+                <a href="#svc-estate"><strong>Estate Planning</strong><span>Transfer wealth</span></a>
+              </div>
+              <div class="nav-col">
+                <p class="nav-col-title">Tax &amp; accounting</p>
+                <a href="#svc-taxprep"><strong>Tax Preparation</strong><span>Individuals and businesses</span></a>
+                <a href="#svc-taxstrategy"><strong>Tax Planning</strong><span>Year-round strategy</span></a>
+                <a href="#svc-bookkeeping"><strong>Bookkeeping</strong><span>For small businesses</span></a>
+                <a href="#svc-bookkeeping-plus"><strong>Bookkeeping Plus</strong><span>Your outsourced CFO</span></a>
+              </div>
             </div>
           </div>
 
@@ -177,11 +192,7 @@
               Who We Serve
               <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <div class="nav-menu" id="menu-serve">
-              <a href="#serve"><strong>Families</strong><span>Saving, protecting, and planning ahead</span></a>
-              <a href="#serve"><strong>Business Owners</strong><span>Your business and your retirement, together</span></a>
-              <a href="#serve"><strong>Pre-retirees &amp; Retirees</strong><span>Turning savings into reliable income</span></a>
-            </div>
+            <div class="nav-menu nav-menu-list" id="menu-serve"><a href="#serve"><strong>Near-Retirees</strong></a><a href="#serve"><strong>Retirees</strong></a><a href="#serve"><strong>Career Changers</strong></a><a href="#serve"><strong>Young Professionals</strong></a><a href="#serve"><strong>Families &amp; Parents</strong></a><a href="#serve"><strong>Business Owners</strong></a><a href="#serve"><strong>Recent Inheritance Recipients</strong></a><a href="#serve"><strong>Legacy Builders</strong></a></div>
           </div>
 
           <div class="nav-item has-menu">
@@ -286,53 +297,91 @@
           <div class="section-head">
             <p class="eyebrow">What we do</p>
             <h2>Everything your money touches, planned together.</h2>
-            <p class="section-sub">Four services that work as one plan, so a decision in one area never quietly works against another.</p>
+            <p class="section-sub">Financial planning and tax services under one roof, so a decision in one area never quietly works against another.</p>
           </div>
 
-          <div class="service-grid">
-            <article class="service-card">
-              <span class="service-num">01</span>
-              <h3>Financial Planning</h3>
-              <p>A clear plan for retirement, insurance, and the goals in between, reviewed as life changes.</p>
-              <ul class="ticks">
-                <li>Retirement planning</li>
-                <li>Life and long-term care insurance</li>
-                <li>Debt and savings strategy</li>
-              </ul>
-            </article>
+          <div class="svc-tabs" role="tablist" aria-label="Our services">
+            <button type="button" role="tab" class="svc-tab" id="tab-financial" aria-controls="panel-financial" aria-selected="true">Financial services</button>
+            <button type="button" role="tab" class="svc-tab" id="tab-tax" aria-controls="panel-tax" aria-selected="false" tabindex="-1">Tax &amp; accounting</button>
+            <span class="svc-tab-ink" aria-hidden="true"></span>
+          </div>
 
-            <article class="service-card">
-              <span class="service-num">02</span>
-              <h3>Investment Management</h3>
-              <p>Portfolios built around your plan and your comfort with risk, not the other way around.</p>
-              <ul class="ticks">
-                <li>Asset management</li>
-                <li>IRA and 401(k) rollovers</li>
-                <li>College savings: 529 and UTMA</li>
-              </ul>
-            </article>
+          <div class="svc-panel" id="panel-financial" role="tabpanel" aria-labelledby="tab-financial">
+            <ol class="wealth-path" aria-label="The life of your wealth">
+              <li><a href="#svc-roth"><span>Build</span></a></li>
+              <li><a href="#svc-rollovers"><span>Organize</span></a></li>
+              <li><a href="#svc-taxplanning"><span>Preserve</span></a></li>
+              <li><a href="#svc-minors"><span>Invest in future generations</span></a></li>
+              <li><a href="#svc-estate"><span>Transfer</span></a></li>
+            </ol>
 
-            <article class="service-card">
-              <span class="service-num">03</span>
-              <h3>Tax Services</h3>
-              <p>Tax preparation and planning handled alongside your investments, so nothing works against the other.</p>
-              <ul class="ticks">
-                <li>Individual tax preparation</li>
-                <li>Year-round tax planning</li>
-                <li>Tax-aware retirement income</li>
-              </ul>
-            </article>
+            <div class="service-grid service-grid-3">
+              <article class="service-card service-card-feature" id="svc-holistic">
+                <span class="service-num">Your financial quarterback</span>
+                <h3>Holistic Financial Planning</h3>
+                <p>We coordinate every part of your financial life, from investment management and retirement planning to tax and estate considerations, so every decision works together to help you build, protect, and transfer wealth.</p>
+                <a href="#contact" class="card-link">Start your plan <span aria-hidden="true">&rarr;</span></a>
+              </article>
+              <article class="service-card" id="svc-roth">
+                <span class="service-num">Build wealth</span>
+                <h3>Roth IRAs</h3>
+                <p>Pay taxes on the seed, not the harvest. Contributing after-tax dollars now can mean decades of potential tax-free growth and withdrawals later, so you keep more of your retirement savings.</p>
+                <a href="#contact" class="card-link">Ask about Roth IRAs <span aria-hidden="true">&rarr;</span></a>
+              </article>
+              <article class="service-card" id="svc-rollovers">
+                <span class="service-num">Organize wealth</span>
+                <h3>Rollovers</h3>
+                <p>Leaving an employer? A rollover IRA may offer more flexibility and investment choices, and lets you consolidate accounts as part of your overall plan. The right move depends on your situation.</p>
+                <a href="#contact" class="card-link">Ask about rollovers <span aria-hidden="true">&rarr;</span></a>
+              </article>
+              <article class="service-card" id="svc-taxplanning">
+                <span class="service-num">Preserve wealth</span>
+                <h3>Tax Planning</h3>
+                <p>We coordinate your financial decisions with tax-efficient strategies so you keep more of what you've earned and stay focused on your long-term goals.</p>
+                <a href="#contact" class="card-link">Ask about tax planning <span aria-hidden="true">&rarr;</span></a>
+              </article>
+              <article class="service-card" id="svc-minors">
+                <span class="service-num">Invest in future generations</span>
+                <h3>Saving for Minors</h3>
+                <p>Whether it's education, future needs, or a lasting legacy, 529 plans and UTMA accounts offer a structured way to invest in a child's future. We help you pick the right fit for your family.</p>
+                <a href="#contact" class="card-link">Ask about 529s &amp; UTMAs <span aria-hidden="true">&rarr;</span></a>
+              </article>
+              <article class="service-card" id="svc-estate">
+                <span class="service-num">Transfer wealth</span>
+                <h3>Estate Planning</h3>
+                <p>We coordinate legal, tax, investment, and legacy considerations to help preserve your wealth, support your family, and make sure your wishes are carried out efficiently.</p>
+                <a href="#contact" class="card-link">Ask about estate planning <span aria-hidden="true">&rarr;</span></a>
+              </article>
+            </div>
+          </div>
 
-            <article class="service-card">
-              <span class="service-num">04</span>
-              <h3>Business Services</h3>
-              <p>Plans for your company today and for the day you step away from it.</p>
-              <ul class="ticks">
-                <li>401(k) and small business retirement plans</li>
-                <li>Profit-sharing and deferred compensation</li>
-                <li>Business succession and transition</li>
-              </ul>
-            </article>
+          <div class="svc-panel" id="panel-tax" role="tabpanel" aria-labelledby="tab-tax">
+            <div class="service-grid service-grid-2">
+              <article class="service-card" id="svc-taxprep">
+                <span class="service-num">Individuals &amp; businesses</span>
+                <h3>Tax Preparation</h3>
+                <p>Accurate, reliable tax preparation for individuals and businesses. We help you maximize deductions, minimize your tax liability, and stay compliant with ever-changing tax laws.</p>
+                <a href="#contact" class="card-link">Get your taxes done <span aria-hidden="true">&rarr;</span></a>
+              </article>
+              <article class="service-card" id="svc-taxstrategy">
+                <span class="service-num">Year-round, not just April</span>
+                <h3>Tax Planning</h3>
+                <p>We do more than prepare returns. We help you navigate tax strategies proactively, find savings opportunities, and stay compliant, turning tax season into a tool for better financial planning.</p>
+                <a href="#contact" class="card-link">Plan ahead <span aria-hidden="true">&rarr;</span></a>
+              </article>
+              <article class="service-card" id="svc-bookkeeping">
+                <span class="service-num">For small businesses</span>
+                <h3>Bookkeeping</h3>
+                <p>We track income, expenses, invoices, payroll, and cash flow accurately, so you can stop managing records and focus on growing your business with a clear, current picture of its financial health.</p>
+                <a href="#contact" class="card-link">Ask about bookkeeping <span aria-hidden="true">&rarr;</span></a>
+              </article>
+              <article class="service-card service-card-feature" id="svc-bookkeeping-plus">
+                <span class="service-num">Your outsourced CFO</span>
+                <h3>Bookkeeping Plus</h3>
+                <p>More than bookkeeping. Clear financial reporting, cash flow visibility, and strategic advice that help you make smarter decisions, improve profitability, and grow with confidence, at a fraction of the cost of a full-time CFO.</p>
+                <a href="#contact" class="card-link">Ask about Bookkeeping Plus <span aria-hidden="true">&rarr;</span></a>
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -374,45 +423,64 @@
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Who we serve</p>
-            <h2>Different seasons of life. The same straight answers.</h2>
-            <p class="section-sub">From recent graduates to clients in their 90s. Whatever your question is, someone has probably brought it to us before.</p>
+            <h2>We aren't niche, and we like it that way.</h2>
+            <p class="section-sub">We serve clients through every stage of life. If you have a question or situation, odds are we've handled it before.</p>
           </div>
 
-          <div class="serve-grid">
-            <article class="serve-card">
-              <img decoding="async" src="images/serve-families.jpg" alt="A family cooking together at home" loading="lazy" width="960" height="640" />
-              <div class="serve-body">
-                <h3>Families</h3>
-                <ul class="questions">
-                  <li>How should we invest our money?</li>
-                  <li>Can we save for college and retirement at once?</li>
-                  <li>Is life insurance worth it for us?</li>
-                </ul>
-              </div>
-            </article>
+          <div class="serve-strip" aria-hidden="true">
+            <img decoding="async" src="images/serve-families.jpg" alt="" loading="lazy" width="960" height="640" />
+            <img decoding="async" src="images/serve-business.jpg" alt="" loading="lazy" width="960" height="640" />
+            <img decoding="async" src="images/serve-retirees.jpg" alt="" loading="lazy" width="960" height="640" />
+          </div>
 
-            <article class="serve-card">
-              <img decoding="async" src="images/serve-business.jpg" alt="A business owner working at her desk" loading="lazy" width="960" height="640" />
-              <div class="serve-body">
-                <h3>Business owners</h3>
-                <ul class="questions">
-                  <li>What retirement plan fits my company?</li>
-                  <li>How do I use my business's value when I retire?</li>
-                  <li>What happens to the business when I step away?</li>
-                </ul>
-              </div>
+          <div class="persona-grid">
+            <article class="persona">
+              <span class="persona-num">01</span>
+              <h3>Near-Retirees</h3>
+              <p>Income planning, Social Security strategies, Medicare considerations, and retirement readiness.</p>
+              <a href="#svc-holistic" class="persona-ask">Ask us about building your plan <span aria-hidden="true">&rarr;</span></a>
             </article>
-
-            <article class="serve-card">
-              <img decoding="async" src="images/serve-retirees.jpg" alt="A retired couple sitting together on a park bench" loading="lazy" width="960" height="640" />
-              <div class="serve-body">
-                <h3>Pre-retirees &amp; retirees</h3>
-                <ul class="questions">
-                  <li>When can I retire, and how much can I spend?</li>
-                  <li>How do I turn savings into a paycheck?</li>
-                  <li>How do I plan for long-term care?</li>
-                </ul>
-              </div>
+            <article class="persona">
+              <span class="persona-num">02</span>
+              <h3>Retirees</h3>
+              <p>Sustainable income, preserving assets, managing taxes, and enjoying retirement with confidence.</p>
+              <a href="#svc-holistic" class="persona-ask">Ask us about retirement income <span aria-hidden="true">&rarr;</span></a>
+            </article>
+            <article class="persona">
+              <span class="persona-num">03</span>
+              <h3>Career Changers</h3>
+              <p>Evaluating benefits, managing retirement accounts, or rolling over an old 401(k) after a job change.</p>
+              <a href="#svc-rollovers" class="persona-ask">Ask us about rollover IRAs <span aria-hidden="true">&rarr;</span></a>
+            </article>
+            <article class="persona">
+              <span class="persona-num">04</span>
+              <h3>Young Professionals</h3>
+              <p>Starting to build wealth with guidance on saving, investing, debt management, and long-term planning.</p>
+              <a href="#svc-roth" class="persona-ask">Ask us about Roth IRAs <span aria-hidden="true">&rarr;</span></a>
+            </article>
+            <article class="persona">
+              <span class="persona-num">05</span>
+              <h3>Families &amp; Parents</h3>
+              <p>Balancing today's needs while planning for education, retirement, and future family goals.</p>
+              <a href="#svc-minors" class="persona-ask">Ask us about 529s and UTMAs <span aria-hidden="true">&rarr;</span></a>
+            </article>
+            <article class="persona">
+              <span class="persona-num">06</span>
+              <h3>Business Owners</h3>
+              <p>Coordinating personal and business decisions, managing cash flow, reducing taxes, and preparing for growth.</p>
+              <a href="#svc-bookkeeping" class="persona-ask">Ask us about bookkeeping <span aria-hidden="true">&rarr;</span></a>
+            </article>
+            <article class="persona">
+              <span class="persona-num">07</span>
+              <h3>Recent Inheritance Recipients</h3>
+              <p>Making informed decisions about investing, taxes, and long-term planning after an inheritance.</p>
+              <a href="#svc-taxplanning" class="persona-ask">Ask us about tax planning <span aria-hidden="true">&rarr;</span></a>
+            </article>
+            <article class="persona">
+              <span class="persona-num">08</span>
+              <h3>Legacy Builders</h3>
+              <p>Wealth preservation, charitable giving, estate planning, and opportunities for future generations.</p>
+              <a href="#svc-estate" class="persona-ask">Ask us about estate planning <span aria-hidden="true">&rarr;</span></a>
             </article>
           </div>
         </div>
@@ -546,11 +614,11 @@
           <div class="faq-list">
             <details class="faq-item" open>
               <summary>Why work with a local financial advisor in Burnsville?</summary>
-              <p>You get to sit down face to face with the person managing your plan, in an office close to home. We work with families and business owners across Burnsville, Apple Valley, Eagan, Lakeville, Savage, and Prior Lake, and meet by video when that is easier.</p>
+              <p>You get to sit down face to face with the person managing your plan, in an office close to home. We work with families and business owners across Burnsville, Apple Valley, Eagan, Savage, Prior Lake, Lakeville, and Shakopee, and meet by video when that is easier.</p>
             </details>
             <details class="faq-item">
               <summary>Do you have a financial advisor office in Barron, WI?</summary>
-              <p>Yes. Our Barron office is at 421 E La Salle Ave, Suite A, run by Eric Holten, a Barron native. David grew up in Barron too, so for us it's home. Call <a href="tel:7154182044">(715) 418-2044</a> to meet in person.</p>
+              <p>Yes. Our Barron office is at 421 E La Salle Ave, Suite A, run by Eric Holten, a Barron native. David grew up in Barron too, so for us it's home. We serve Rice Lake, Cameron, Chetek, Spooner, Cumberland, and Hayward from there. Call <a href="tel:7154182044">(715) 418-2044</a> to meet in person.</p>
             </details>
             <details class="faq-item">
               <summary>What does a first meeting look like?</summary>
@@ -563,6 +631,10 @@
             <details class="faq-item">
               <summary>Can you help with my business retirement plan?</summary>
               <p>Yes. We help business owners set up and manage 401(k) plans, small business retirement plans, profit-sharing plans, and deferred compensation, and we plan for succession or the sale of the business.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Do you offer bookkeeping for small businesses?</summary>
+              <p>Yes. We handle income, expenses, invoices, payroll, and cash flow tracking, and our Bookkeeping Plus service adds reporting and strategic advice, like an outsourced CFO at a fraction of the cost.</p>
             </details>
             <details class="faq-item">
               <summary>Do you help with college savings?</summary>
@@ -580,10 +652,10 @@
       <section class="marquee" aria-label="Communities we serve">
         <div class="marquee-track">
           <ul class="marquee-list">
-            <li>Burnsville</li><li>Apple Valley</li><li>Eagan</li><li>Lakeville</li><li>Savage</li><li>Prior Lake</li><li>Bloomington</li><li>Barron, WI</li><li>Rice Lake</li><li>Chetek</li>
+            <li>Burnsville</li><li>Apple Valley</li><li>Eagan</li><li>Savage</li><li>Prior Lake</li><li>Lakeville</li><li>Shakopee</li><li>Barron, WI</li><li>Rice Lake</li><li>Cameron</li><li>Chetek</li><li>Spooner</li><li>Cumberland</li><li>Hayward</li>
           </ul>
           <ul class="marquee-list" aria-hidden="true">
-            <li>Burnsville</li><li>Apple Valley</li><li>Eagan</li><li>Lakeville</li><li>Savage</li><li>Prior Lake</li><li>Bloomington</li><li>Barron, WI</li><li>Rice Lake</li><li>Chetek</li>
+            <li>Burnsville</li><li>Apple Valley</li><li>Eagan</li><li>Savage</li><li>Prior Lake</li><li>Lakeville</li><li>Shakopee</li><li>Barron, WI</li><li>Rice Lake</li><li>Cameron</li><li>Chetek</li><li>Spooner</li><li>Cumberland</li><li>Hayward</li>
           </ul>
         </div>
       </section>
@@ -626,6 +698,10 @@
               ></iframe>
             </div>
           </div>
+          <div class="tax-line">
+            <img decoding="async" src="images/team-adam.jpg" alt="Adam SanFelippo" width="360" height="360" loading="lazy" />
+            <p><strong>Tax &amp; accounting questions?</strong> Reach Adam SanFelippo in the Milwaukee area at <a href="tel:2622720744">(262) 272-0744</a> or <a href="mailto:adam@sloanfs.com">adam@sloanfs.com</a>.</p>
+          </div>
         </div>
       </section>
     </main>
@@ -636,7 +712,7 @@
           <a href="/" class="brand brand-footer" aria-label="Sloan Financial Solutions home">
             <img decoding="async" src="images/logo-horizontal-light.png" alt="Sloan Financial Solutions LLC" class="brand-logo" width="420" height="230" loading="lazy" />
           </a>
-          <p class="footer-note">Serving Burnsville, Apple Valley, Eagan, Lakeville, Savage, Prior Lake, and Barron, WI.</p>
+          <p class="footer-note">Serving Burnsville, Apple Valley, Eagan, Savage, Prior Lake, Lakeville, and Shakopee in Minnesota, and Barron, Rice Lake, Cameron, Chetek, Spooner, Cumberland, and Hayward in Wisconsin.</p>
         </div>
         <div>
           <p class="footer-title">Services</p>
@@ -688,6 +764,6 @@
     </div>
 
     <script src="vendor/lenis.min.js" defer></script>
-    <script src="script.js?v=10" defer></script>
+    <script src="script.js?v=11" defer></script>
   </body>
 </html>

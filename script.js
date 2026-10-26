@@ -171,6 +171,83 @@
   setInterval(updateStatus, 60000);
 
   // ---------------------------------------------------------------
+  // Services tabs + deep links ("Ask us about Roth IRAs")
+  // ---------------------------------------------------------------
+  var svcTabs = Array.prototype.slice.call(document.querySelectorAll('.svc-tab'));
+  var svcInk = document.querySelector('.svc-tab-ink');
+  function moveInk(tab) {
+    if (!svcInk || !tab) return;
+    svcInk.style.width = tab.offsetWidth + 'px';
+    svcInk.style.transform = 'translateX(' + tab.offsetLeft + 'px)';
+  }
+  function selectSvc(tab, focus) {
+    svcTabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (!panel) return;
+      panel.hidden = !on;
+      if (on) {
+        panel.classList.remove('is-entering');
+        void panel.offsetWidth;
+        panel.classList.add('is-entering');
+        panel.querySelectorAll('[data-reveal], [data-reveal-img]').forEach(function (el) { el.classList.add('in'); });
+      }
+    });
+    moveInk(tab);
+    if (focus) tab.focus();
+  }
+  if (svcTabs.length) {
+    svcTabs.forEach(function (t) {
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (panel && t.getAttribute('aria-selected') !== 'true') panel.hidden = true;
+    });
+    moveInk(svcTabs[0]);
+    svcTabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { selectSvc(tab, false); });
+      tab.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight') n = svcTabs[(i + 1) % svcTabs.length];
+        if (e.key === 'ArrowLeft') n = svcTabs[(i - 1 + svcTabs.length) % svcTabs.length];
+        if (n) { e.preventDefault(); selectSvc(n, true); }
+      });
+    });
+    window.addEventListener('resize', function () {
+      moveInk(document.querySelector('.svc-tab[aria-selected="true"]'));
+    });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { moveInk(document.querySelector('.svc-tab[aria-selected="true"]')); });
+    }
+  }
+
+  function openService(id) {
+    var card = document.getElementById(id);
+    if (!card || !card.classList.contains('service-card')) return null;
+    var panel = card.closest('.svc-panel');
+    if (panel && panel.hidden) {
+      var tab = document.querySelector('.svc-tab[aria-controls="' + panel.id + '"]');
+      if (tab) selectSvc(tab, false);
+    }
+    card.classList.remove('is-flash');
+    void card.offsetWidth;
+    card.classList.add('is-flash');
+    return card;
+  }
+  // Capture phase: open the right tab before the smooth-scroll handler runs.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href*="#svc-"]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    var id = href.split('#')[1];
+    if (href.charAt(0) === '#' || location.pathname === '/' || /index\.html$/.test(location.pathname)) openService(id);
+  }, true);
+  if (location.hash.indexOf('#svc-') === 0) {
+    var landed = openService(location.hash.slice(1));
+    if (landed) setTimeout(function () { landed.scrollIntoView({ block: 'center' }); }, 80);
+  }
+
+  // ---------------------------------------------------------------
   // Motion system. Everything stays visible unless JS + motion are on.
   // ---------------------------------------------------------------
   if (motion) {
@@ -228,7 +305,7 @@
 
     // 2. Generic reveal targets, staggered inside their group.
     var groups = [
-      '.trust-row p', '.service-card', '.serve-card', '.steps li', '.team-card', '.person', '.roots-card',
+      '.trust-row p', '.service-card', '.persona', '.wealth-path li', '.tax-line', '.serve-card', '.steps li', '.team-card', '.person', '.roots-card',
       '.promise', '.chapter-list li', '.faq-item', '.office-card', '.map-card', '.story-facts p', '.year-stop',
       '.footer-grid > div', '.section-sub', '.section-head .eyebrow', '.about-copy > p, .about-copy > a, .signature-row',
       '.why-copy > p, .why-copy .signature-row', '.compare-copy > p', '.contact-head > p', '.quote-sub', '.ask-card',
@@ -245,7 +322,7 @@
     });
 
     // 3. Image mask reveals.
-    document.querySelectorAll('.hero-photo-frame, .portrait-photo, .serve-card img, .team-photo, .person-photo, .story-logo img, .ask-card img, .compare-table')
+    document.querySelectorAll('.hero-photo-frame, .portrait-photo, .serve-strip img, .team-photo, .person-photo, .story-logo img, .ask-card img, .compare-table')
       .forEach(function (el) { el.setAttribute('data-reveal-img', ''); });
 
     var reveal = function (el) { el.classList.add('in'); };
