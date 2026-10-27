@@ -2067,3 +2067,86 @@ html.motion .serve-strip img:nth-child(3) { transition-delay: 0.24s; }
   .tax-line { align-items: flex-start; }
 }
 @media (max-width: 640px) { .wealth-path { display: none; } }
+
+/* ==================================================================
+   v12: David's Oct 27 feedback
+   ================================================================== */
+
+/* Year-round band */
+.year-allyear {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  margin: 18px 0 0;
+  padding: 16px 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--bg), var(--brass-tint) 50%, var(--bg));
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background 0.4s var(--ease), border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+.year-allyear strong { font-weight: 500; }
+.year-allyear-label {
+  flex: none;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--brass-light);
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.year-allyear:hover { border-color: var(--brass-light); box-shadow: var(--shadow); }
+.year-allyear[aria-selected="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+.year-allyear[aria-selected="true"] .year-allyear-label { border-color: rgba(214, 182, 123, 0.5); color: var(--brass-light); }
+.year-track { position: relative; }
+
+/* Contact: stacked office cards beside the map */
+.office-grid-stacked { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: stretch; }
+.office-stack { display: grid; gap: 16px; }
+.office-grid-stacked .map-card { grid-column: auto; position: relative; min-height: 420px; }
+.office-grid-stacked .map-card iframe { position: absolute; inset: 0; height: 100%; transition: opacity 0.4s ease; }
+.map-card.is-swapping iframe { opacity: 0.35; }
+.office-card[data-map] { cursor: pointer; }
+.office-card.is-active { border-color: rgba(214, 182, 123, 0.7); background: rgba(255, 255, 255, 0.08); }
+.office-card h3 { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.office-pin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.office-pin::before { content: ""; width: 7px; height: 7px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: currentColor; }
+.office-card.is-active .office-pin { background: var(--brass-light); border-color: var(--brass-light); color: var(--navy); }
+
+@media (max-width: 1120px) {
+  .office-grid-stacked { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 960px) {
+  .year-allyear { margin-bottom: 16px; font-size: 1rem; }
+}
+@media (max-width: 760px) {
+  .office-grid-stacked { grid-template-columns: 1fr; }
+  .office-grid-stacked .map-card { min-height: 300px; }
+  .year-allyear { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+.year-track .year-allyear { position: relative; left: auto; bottom: auto; flex-direction: row; align-items: center; }
+@media (max-width: 760px) { .year-track .year-allyear { flex-direction: column; align-items: flex-start; } }

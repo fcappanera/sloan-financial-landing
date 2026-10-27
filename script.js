@@ -506,12 +506,8 @@
       panel.classList.add('is-swapping');
       if (focus) stop.focus();
     };
-    var month = today.getMonth() + 1;
-    var current = stops[0];
-    stops.forEach(function (s) {
-      if (parseFloat(s.style.getPropertyValue('--m')) <= month + 0.5) current = s;
-    });
-    select(current, false);
+    // Start on "all year": advice is never seasonal.
+    select(track.querySelector('.year-allyear') || stops[0], false);
     stops.forEach(function (stop, i) {
       stop.addEventListener('click', function () { select(stop, false); });
       stop.addEventListener('keydown', function (event) {
@@ -522,6 +518,29 @@
       });
     });
   }
+
+  // ---------------------------------------------------------------
+  // Contact: switch the map between offices
+  // ---------------------------------------------------------------
+  var mapFrame = document.querySelector('.office-grid-stacked .map-card iframe');
+  var officeCards = document.querySelectorAll('.office-card[data-map]');
+  officeCards.forEach(function (card) {
+    var show = function () {
+      if (!mapFrame || card.classList.contains('is-active')) return;
+      officeCards.forEach(function (c) { c.classList.toggle('is-active', c === card); });
+      mapFrame.parentElement.classList.add('is-swapping');
+      mapFrame.src = card.getAttribute('data-map');
+      mapFrame.title = card.getAttribute('data-map-title');
+      mapFrame.addEventListener('load', function done() {
+        mapFrame.parentElement.classList.remove('is-swapping');
+        mapFrame.removeEventListener('load', done);
+      });
+    };
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      show();
+    });
+  });
 
   // ---------------------------------------------------------------
   // FAQ: one open at a time
