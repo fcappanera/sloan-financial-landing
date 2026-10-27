@@ -254,7 +254,7 @@
     // 1. Split headings into words for a masked line reveal.
     var headingSel = [
       '.hero-copy h1', '.story-hero h1', '.section-head h2', '.about-copy h2', '.why-copy h2',
-      '.compare-copy h2', '.faq-head h2', '.contact-head h2', '.big-quote p', '.story-cta-inner h2'
+      '.compare-copy h2', '.faq-head h2', '.contact-head h2', '.detail-copy h2', '.loc-area-grid h2', '.big-quote p', '.story-cta-inner h2'
     ].join(',');
 
     var wordIndex;
@@ -305,7 +305,7 @@
 
     // 2. Generic reveal targets, staggered inside their group.
     var groups = [
-      '.trust-row p', '.service-card', '.persona', '.wealth-path li', '.tax-line', '.serve-card', '.steps li', '.team-card', '.person', '.roots-card',
+      '.trust-row p', '.service-card', '.persona', '.wealth-path li', '.tax-line', '.detail-copy > *:not(h2)', '.detail-card', '.jump-card', '.loc-card', '.chips li', '.person-mini', '.loc-svc', '.loc-area-text', '.crumbs', '.serve-card', '.steps li', '.team-card', '.person', '.roots-card',
       '.promise', '.chapter-list li', '.faq-item', '.office-card', '.map-card', '.story-facts p', '.year-stop',
       '.footer-grid > div', '.section-sub', '.section-head .eyebrow', '.about-copy > p, .about-copy > a, .signature-row',
       '.why-copy > p, .why-copy .signature-row', '.compare-copy > p', '.contact-head > p', '.quote-sub', '.ask-card',

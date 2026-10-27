@@ -3,19 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Financial Advisor &amp; Tax Services | Burnsville, MN &amp; Barron, WI | Sloan Financial Solutions</title>
+    <title>Sloan Financial Solutions | Financial Planning &amp; Tax, MN &amp; WI</title>
     <meta
       name="description"
-      content="Sloan Financial Solutions offers financial planning, investments, tax preparation, and bookkeeping for families and business owners. Offices in Burnsville, MN and Barron, WI, serving clients in Minnesota, Wisconsin, and beyond. Call (952) 432-8000."
+      content="Financial planning, investments, tax preparation, and bookkeeping for families and business owners. Offices in Burnsville, MN and Barron, WI. Call (952) 432-8000."
     />
     <meta name="theme-color" content="#14293b" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://sloan-financial-landing.vercel.app/" />
+    <link rel="canonical" href="https://www.sloanfs.com/" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.sloanfs.com/" />
     <meta property="og:site_name" content="Sloan Financial Solutions" />
-    <meta property="og:title" content="Financial Advisor &amp; Tax Services | Sloan Financial Solutions" />
+    <meta property="og:title" content="Sloan Financial Solutions | Financial Planning &amp; Tax, MN &amp; WI" />
     <meta property="og:description" content="Financial planning and tax services for families and business owners, from a team that knows your whole picture. Offices in Burnsville, MN and Barron, WI." />
-    <meta property="og:image" content="/og-image.svg" />
+    <meta property="og:image" content="https://www.sloanfs.com/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -28,19 +29,24 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=12" />
+    <link rel="stylesheet" href="styles.css?v=13" />
     <script>document.documentElement.classList.add("js");if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion");</script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "FinancialService",
-        "@id": "https://sloan-financial-landing.vercel.app/#burnsville",
+        "@id": "https://www.sloanfs.com/#burnsville",
         "name": "Sloan Financial Solutions",
-        "url": "https://sloan-financial-landing.vercel.app/",
+        "legalName": "Sloan Financial Solutions LLC",
+        "logo": "https://www.sloanfs.com/images/logo-stacked-dark.png",
+        "geo": { "@type": "GeoCoordinates", "latitude": 44.7801610, "longitude": -93.2787945 },
+        "hasMap": "https://maps.google.com/?q=12301+Nicollet+Ave+Suite+101+Burnsville+MN+55337",
+        "foundingDate": "2020",
+        "url": "https://www.sloanfs.com/",
         "telephone": "+1-952-432-8000",
         "faxNumber": "+1-952-432-8011",
         "email": "david@sloanfs.com",
-        "image": "https://sloan-financial-landing.vercel.app/images/hero-lake.jpg",
+        "image": "https://www.sloanfs.com/images/hero-lake.jpg",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "12301 Nicollet Ave, Suite 101",
@@ -67,7 +73,11 @@
       {
         "@context": "https://schema.org",
         "@type": "FinancialService",
+        "@id": "https://www.sloanfs.com/barron-wi#office",
         "name": "Sloan Financial Solutions, Barron office",
+        "url": "https://www.sloanfs.com/barron-wi",
+        "geo": { "@type": "GeoCoordinates", "latitude": 45.3999866, "longitude": -91.8520518 },
+        "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "16:30" },
         "telephone": "+1-715-418-2044",
         "email": "eric@sloanfs.com",
         "address": {
@@ -78,7 +88,7 @@
           "postalCode": "54812",
           "addressCountry": "US"
         },
-        "parentOrganization": { "@id": "https://sloan-financial-landing.vercel.app/#burnsville" }
+        "parentOrganization": { "@id": "https://www.sloanfs.com/#burnsville" }
       }
     </script>
     <script type="application/ld+json">
@@ -134,6 +144,15 @@
         ]
       }
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Sloan Financial Solutions",
+        "url": "https://www.sloanfs.com/",
+        "publisher": { "@id": "https://www.sloanfs.com/#burnsville" }
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -175,19 +194,19 @@
             </button>
             <div class="nav-menu nav-menu-wide" id="menu-services">
               <div class="nav-col">
-                <p class="nav-col-title">Financial services</p>
-                <a href="#svc-holistic"><strong>Holistic Financial Planning</strong><span>Your financial quarterback</span></a>
-                <a href="#svc-roth"><strong>Roth IRAs</strong><span>Build wealth</span></a>
-                <a href="#svc-rollovers"><strong>Rollovers</strong><span>Organize wealth</span></a>
-                <a href="#svc-minors"><strong>Saving for Minors</strong><span>529s and UTMAs</span></a>
-                <a href="#svc-estate"><strong>Estate Planning</strong><span>Transfer wealth</span></a>
+                <p class="nav-col-title"><a class="nav-col-link" href="/financial-planning">Financial services</a></p>
+                <a href="/financial-planning#holistic"><strong>Holistic Financial Planning</strong><span>Your financial quarterback</span></a>
+                <a href="/financial-planning#roth-ira"><strong>Roth IRAs</strong><span>Build wealth</span></a>
+                <a href="/financial-planning#rollovers"><strong>Rollovers</strong><span>Organize wealth</span></a>
+                <a href="/financial-planning#saving-for-minors"><strong>Saving for Minors</strong><span>529s and UTMAs</span></a>
+                <a href="/financial-planning#estate-planning"><strong>Estate Planning</strong><span>Transfer wealth</span></a>
               </div>
               <div class="nav-col">
-                <p class="nav-col-title">Tax &amp; accounting</p>
-                <a href="#svc-taxprep"><strong>Tax Preparation</strong><span>Individuals and businesses</span></a>
-                <a href="#svc-taxstrategy"><strong>Tax Planning</strong><span>Year-round strategy</span></a>
-                <a href="#svc-bookkeeping"><strong>Bookkeeping</strong><span>For small businesses</span></a>
-                <a href="#svc-bookkeeping-plus"><strong>Bookkeeping Plus</strong><span>Your outsourced CFO</span></a>
+                <p class="nav-col-title"><a class="nav-col-link" href="/tax-services">Tax &amp; accounting</a></p>
+                <a href="/tax-services#tax-preparation"><strong>Tax Preparation</strong><span>Individuals and businesses</span></a>
+                <a href="/tax-services#tax-planning"><strong>Tax Planning</strong><span>Year-round strategy</span></a>
+                <a href="/tax-services#bookkeeping"><strong>Bookkeeping</strong><span>For small businesses</span></a>
+                <a href="/tax-services#bookkeeping-plus"><strong>Bookkeeping Plus</strong><span>Your outsourced CFO</span></a>
               </div>
             </div>
           </div>
@@ -211,6 +230,18 @@
               <a href="#process"><strong>How We Work</strong><span>What to expect, step by step</span></a>
               <a href="#year"><strong>A Year with Sloan</strong><span>What we do together, month by month</span></a>
               <a href="#faq"><strong>FAQ</strong><span>Straight answers before you call</span></a>
+            </div>
+          </div>
+
+          <div class="nav-item has-menu">
+            <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="menu-locations">
+              Locations
+              <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="nav-menu" id="menu-locations">
+              <a href="/burnsville-mn"><strong>Burnsville, MN</strong><span>12301 Nicollet Ave, Suite 101</span></a>
+              <a href="/barron-wi"><strong>Barron, WI</strong><span>421 E La Salle Ave, Suite A</span></a>
+              <a href="/milwaukee-wi"><strong>Milwaukee area</strong><span>Tax &amp; planning by video and phone</span></a>
             </div>
           </div>
 
@@ -246,7 +277,7 @@
           </div>
 
           <figure class="hero-photo" data-depth="12">
-            <div class="hero-photo-frame"><img decoding="async" src="images/hero-lake.jpg" alt="Morning mist over a Minnesota lake with a wooden dock" width="960" height="640" /></div>
+            <div class="hero-photo-frame"><img decoding="async" fetchpriority="high" src="images/hero-lake.jpg" alt="Morning mist over a Minnesota lake with a wooden dock" width="960" height="640" /></div>
             <figcaption class="hero-card">
               <span class="status" data-status><span class="status-dot"></span><span class="status-text">Mon to Fri, 9:00 to 4:30</span></span>
               <span class="hero-card-value">Burnsville &amp; Barron offices</span>
@@ -325,37 +356,37 @@
                 <span class="service-num">Your financial quarterback</span>
                 <h3>Holistic Financial Planning</h3>
                 <p>We coordinate every part of your financial life, from investment management and retirement planning to tax and estate considerations, so every decision works together to help you build, protect, and transfer wealth.</p>
-                <a href="#contact" class="card-link">Start your plan <span aria-hidden="true">&rarr;</span></a>
+                <a href="/financial-planning#holistic" class="card-link">Explore financial planning <span aria-hidden="true">&rarr;</span></a>
               </article>
               <article class="service-card" id="svc-roth">
                 <span class="service-num">Build wealth</span>
                 <h3>Roth IRAs</h3>
                 <p>Pay taxes on the seed, not the harvest. Contributing after-tax dollars now can mean decades of potential tax-free growth and withdrawals later, so you keep more of your retirement savings.</p>
-                <a href="#contact" class="card-link">Ask about Roth IRAs <span aria-hidden="true">&rarr;</span></a>
+                <a href="/financial-planning#roth-ira" class="card-link">Learn about Roth IRAs <span aria-hidden="true">&rarr;</span></a>
               </article>
               <article class="service-card" id="svc-rollovers">
                 <span class="service-num">Organize wealth</span>
                 <h3>Rollovers</h3>
                 <p>Leaving an employer? A rollover IRA may offer more flexibility and investment choices, and lets you consolidate accounts as part of your overall plan. The right move depends on your situation.</p>
-                <a href="#contact" class="card-link">Ask about rollovers <span aria-hidden="true">&rarr;</span></a>
+                <a href="/financial-planning#rollovers" class="card-link">Learn about rollovers <span aria-hidden="true">&rarr;</span></a>
               </article>
               <article class="service-card" id="svc-taxplanning">
                 <span class="service-num">Preserve wealth</span>
                 <h3>Tax Planning</h3>
                 <p>We coordinate your financial decisions with tax-efficient strategies so you keep more of what you've earned and stay focused on your long-term goals.</p>
-                <a href="#contact" class="card-link">Ask about tax planning <span aria-hidden="true">&rarr;</span></a>
+                <a href="/financial-planning#tax-planning" class="card-link">Learn about tax planning <span aria-hidden="true">&rarr;</span></a>
               </article>
               <article class="service-card" id="svc-minors">
                 <span class="service-num">Invest in future generations</span>
                 <h3>Saving for Minors</h3>
                 <p>Whether it's education, future needs, or a lasting legacy, 529 plans and UTMA accounts offer a structured way to invest in a child's future. We help you pick the right fit for your family.</p>
-                <a href="#contact" class="card-link">Ask about 529s &amp; UTMAs <span aria-hidden="true">&rarr;</span></a>
+                <a href="/financial-planning#saving-for-minors" class="card-link">Learn about 529s &amp; UTMAs <span aria-hidden="true">&rarr;</span></a>
               </article>
               <article class="service-card" id="svc-estate">
                 <span class="service-num">Transfer wealth</span>
                 <h3>Estate Planning</h3>
                 <p>We coordinate legal, tax, investment, and legacy considerations to help preserve your wealth, support your family, and make sure your wishes are carried out efficiently.</p>
-                <a href="#contact" class="card-link">Ask about estate planning <span aria-hidden="true">&rarr;</span></a>
+                <a href="/financial-planning#estate-planning" class="card-link">Learn about estate planning <span aria-hidden="true">&rarr;</span></a>
               </article>
             </div>
           </div>
@@ -366,25 +397,25 @@
                 <span class="service-num">Individuals &amp; businesses</span>
                 <h3>Tax Preparation</h3>
                 <p>Accurate, reliable tax preparation for individuals and businesses. We help you maximize deductions, minimize your tax liability, and stay compliant with ever-changing tax laws.</p>
-                <a href="#contact" class="card-link">Get your taxes done <span aria-hidden="true">&rarr;</span></a>
+                <a href="/tax-services#tax-preparation" class="card-link">Learn about tax preparation <span aria-hidden="true">&rarr;</span></a>
               </article>
               <article class="service-card" id="svc-taxstrategy">
                 <span class="service-num">Year-round, not just April</span>
                 <h3>Tax Planning</h3>
                 <p>We do more than prepare returns. We help you navigate tax strategies proactively, find savings opportunities, and stay compliant, turning tax season into a tool for better financial planning.</p>
-                <a href="#contact" class="card-link">Plan ahead <span aria-hidden="true">&rarr;</span></a>
+                <a href="/tax-services#tax-planning" class="card-link">Learn about tax planning <span aria-hidden="true">&rarr;</span></a>
               </article>
               <article class="service-card" id="svc-bookkeeping">
                 <span class="service-num">For small businesses</span>
                 <h3>Bookkeeping</h3>
                 <p>We track income, expenses, invoices, payroll, and cash flow accurately, so you can stop managing records and focus on growing your business with a clear, current picture of its financial health.</p>
-                <a href="#contact" class="card-link">Ask about bookkeeping <span aria-hidden="true">&rarr;</span></a>
+                <a href="/tax-services#bookkeeping" class="card-link">Learn about bookkeeping <span aria-hidden="true">&rarr;</span></a>
               </article>
               <article class="service-card service-card-feature" id="svc-bookkeeping-plus">
                 <span class="service-num">Your outsourced CFO</span>
                 <h3>Bookkeeping Plus</h3>
                 <p>More than bookkeeping. Clear financial reporting, cash flow visibility, and strategic advice that help you make smarter decisions, improve profitability, and grow with confidence, at a fraction of the cost of a full-time CFO.</p>
-                <a href="#contact" class="card-link">Ask about Bookkeeping Plus <span aria-hidden="true">&rarr;</span></a>
+                <a href="/tax-services#bookkeeping-plus" class="card-link">Learn about Bookkeeping Plus <span aria-hidden="true">&rarr;</span></a>
               </article>
             </div>
           </div>
@@ -687,7 +718,7 @@
           <div class="office-grid office-grid-stacked">
             <div class="office-stack">
             <article class="office-card is-active" data-map="https://maps.google.com/maps?q=12301+Nicollet+Ave+Suite+101+Burnsville+MN+55337&amp;z=14&amp;hl=en&amp;output=embed" data-map-title="Map of Sloan Financial Solutions in Burnsville, MN">
-              <h3>Burnsville, MN <button type="button" class="office-pin" aria-label="Show Burnsville on the map">Map</button></h3>
+              <h3><a href="/burnsville-mn" class="office-name">Burnsville, MN</a> <button type="button" class="office-pin" aria-label="Show Burnsville on the map">Map</button></h3>
               <p class="office-address">12301 Nicollet Ave, Suite 101<br />Burnsville, MN 55337</p>
               <p><a href="tel:9524328000" class="office-phone">(952) 432-8000</a></p>
               <p><a href="mailto:david@sloanfs.com">david@sloanfs.com</a></p>
@@ -696,7 +727,7 @@
             </article>
 
             <article class="office-card" data-map="https://maps.google.com/maps?q=421+E+La+Salle+Ave+Barron+WI+54812&amp;z=14&amp;hl=en&amp;output=embed" data-map-title="Map of Sloan Financial Solutions in Barron, WI">
-              <h3>Barron, WI <button type="button" class="office-pin" aria-label="Show Barron on the map">Map</button></h3>
+              <h3><a href="/barron-wi" class="office-name">Barron, WI</a> <button type="button" class="office-pin" aria-label="Show Barron on the map">Map</button></h3>
               <p class="office-address">421 E La Salle Ave, Suite A<br />Barron, WI 54812</p>
               <p><a href="tel:7154182044" class="office-phone">(715) 418-2044</a></p>
               <p><a href="mailto:eric@sloanfs.com">eric@sloanfs.com</a></p>
@@ -734,10 +765,10 @@
         <div>
           <p class="footer-title">Services</p>
           <ul>
-            <li><a href="#services">Financial planning</a></li>
-            <li><a href="#services">Investment management</a></li>
-            <li><a href="#services">Tax services</a></li>
-            <li><a href="#services">Business services</a></li>
+            <li><a href="/financial-planning">Financial planning</a></li>
+            <li><a href="/financial-planning#roth-ira">Roth IRAs &amp; rollovers</a></li>
+            <li><a href="/tax-services">Tax services</a></li>
+            <li><a href="/tax-services#bookkeeping">Bookkeeping</a></li>
           </ul>
         </div>
         <div>
@@ -750,6 +781,14 @@
           </ul>
         </div>
         <div>
+          <p class="footer-title">Locations</p>
+          <ul>
+            <li><a href="/burnsville-mn">Burnsville, MN</a></li>
+            <li><a href="/barron-wi">Barron, WI</a></li>
+            <li><a href="/milwaukee-wi">Milwaukee area</a></li>
+          </ul>
+        </div>
+        <div>
           <p class="footer-title">Client login</p>
           <ul>
             <li><a href="https://www.mainaccount.com/gwm" target="_blank" rel="noopener noreferrer">Albridge</a></li>
@@ -758,7 +797,7 @@
         </div>
       </div>
 
-      <div class="container footer-legal">
+      <div class="container footer-legal" id="disclosures">
         <p class="legal-links">
           <a href="https://irp.cdn-website.com/1347662b/files/uploaded/Geneos_Form_CRS.pdf" target="_blank" rel="noopener noreferrer">Form CRS</a>
           <a href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer">FINRA BrokerCheck</a>
@@ -781,6 +820,6 @@
     </div>
 
     <script src="vendor/lenis.min.js" defer></script>
-    <script src="script.js?v=12" defer></script>
+    <script src="script.js?v=13" defer></script>
   </body>
 </html>

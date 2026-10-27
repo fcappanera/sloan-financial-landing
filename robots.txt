@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://sloan-financial-landing.vercel.app/sitemap.xml
+
+Sitemap: https://www.sloanfs.com/sitemap.xml
