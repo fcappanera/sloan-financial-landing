@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Story &amp; Team | Sloan Financial Solutions</title>
-    <meta name="description" content="Meet the team behind Sloan Financial Solutions in Burnsville, MN and Barron, WI: David Sloan, Adam SanFelippo, and Eric Holten." />
+    <title>Meet David Sloan, Financial Advisor | Sloan Financial Solutions</title>
+    <meta name="description" content="Meet David Sloan, founder and financial advisor at Sloan Financial Solutions in Burnsville, MN, with Adam SanFelippo and Eric Holten. Our story and our roots in Minnesota and Wisconsin." />
     <meta name="theme-color" content="#14293b" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.sloanfs.com/our-story" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.sloanfs.com/our-story" />
     <meta property="og:site_name" content="Sloan Financial Solutions" />
-    <meta property="og:title" content="Our Story &amp; Team | Sloan Financial Solutions" />
+    <meta property="og:title" content="Meet David Sloan, Financial Advisor | Sloan Financial Solutions" />
     <meta property="og:description" content="Meet David Sloan, Adam SanFelippo, and Eric Holten, the team behind Sloan Financial Solutions in Burnsville, MN and Barron, WI." />
     <meta property="og:image" content="https://www.sloanfs.com/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -26,26 +26,87 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=13" />
+    <link rel="stylesheet" href="styles.css?v=14" />
     <script>document.documentElement.classList.add("js");if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion");</script>
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "Our Story & Team",
-        "url": "https://www.sloanfs.com/our-story",
-        "about": {
-          "@type": "FinancialService",
-          "name": "Sloan Financial Solutions",
-          "foundingDate": "2020",
-          "founder": { "@id": "#david" },
-          "employee": [
-            { "@type": "Person", "@id": "#david", "name": "David Sloan", "jobTitle": "Founder & Financial Advisor", "alumniOf": "University of Wisconsin–La Crosse", "homeLocation": "Burnsville, MN" },
-            { "@type": "Person", "@id": "#adam", "name": "Adam SanFelippo", "jobTitle": "Tax & Accounting Advisor", "alumniOf": "University of Wisconsin–La Crosse" },
-            { "@type": "Person", "@id": "#eric", "name": "Eric Holten", "jobTitle": "Financial Assistant", "workLocation": "Barron, WI" }
-          ]
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Our Story & Team",
+  "url": "https://www.sloanfs.com/our-story",
+  "about": {
+    "@id": "https://www.sloanfs.com/#burnsville"
+  },
+  "mainEntity": [
+    {
+      "@type": "Person",
+      "@id": "https://www.sloanfs.com/our-story#david",
+      "name": "David Sloan",
+      "jobTitle": "Founder & Financial Advisor",
+      "description": "David Sloan founded Sloan Financial Solutions in 2020. He grew up in Barron, Wisconsin, graduated from the University of Wisconsin–La Crosse, and lives in Burnsville, Minnesota.",
+      "image": "https://www.sloanfs.com/images/portrait-david.jpg",
+      "url": "https://www.sloanfs.com/our-story#david",
+      "telephone": "+1-952-432-8000",
+      "email": "david@sloanfs.com",
+      "worksFor": {
+        "@id": "https://www.sloanfs.com/#burnsville"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Wisconsin–La Crosse"
+      },
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Burnsville, Minnesota"
+      },
+      "knowsAbout": [
+        "Financial planning",
+        "Retirement planning",
+        "Roth IRAs",
+        "401(k) rollovers",
+        "Tax planning",
+        "Estate planning"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.sloanfs.com/our-story#adam",
+      "name": "Adam SanFelippo",
+      "jobTitle": "Tax & Accounting Advisor",
+      "image": "https://www.sloanfs.com/images/team-adam.jpg",
+      "telephone": "+1-262-272-0744",
+      "email": "adam@sloanfs.com",
+      "worksFor": {
+        "@id": "https://www.sloanfs.com/#burnsville"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Wisconsin–La Crosse"
+      },
+      "knowsAbout": [
+        "Tax preparation",
+        "Tax planning",
+        "Bookkeeping"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.sloanfs.com/our-story#eric",
+      "name": "Eric Holten",
+      "jobTitle": "Financial Assistant",
+      "image": "https://www.sloanfs.com/images/team-eric.jpg",
+      "telephone": "+1-715-418-2044",
+      "email": "eric@sloanfs.com",
+      "worksFor": {
+        "@id": "https://www.sloanfs.com/#burnsville"
+      },
+      "workLocation": {
+        "@type": "Place",
+        "name": "Barron, Wisconsin"
       }
+    }
+  ]
+}
     </script>
   </head>
   <body class="page-story">
@@ -600,6 +661,6 @@
     </div>
 
     <script src="vendor/lenis.min.js" defer></script>
-    <script src="script.js?v=13" defer></script>
+    <script src="script.js?v=14" defer></script>
   </body>
 </html>

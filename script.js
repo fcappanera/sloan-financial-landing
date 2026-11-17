@@ -173,6 +173,47 @@
   // ---------------------------------------------------------------
   // Services tabs + deep links ("Ask us about Roth IRAs")
   // ---------------------------------------------------------------
+  // ---------------------------------------------------------------
+  // Mobile card rails: a thin progress line under each swipeable row,
+  // and the whole row reveals together once it scrolls into view.
+  // ---------------------------------------------------------------
+  var railUpdates = [];
+  document.querySelectorAll('.service-grid-3, .service-grid-2, .persona-grid').forEach(function (rail) {
+    var bar = document.createElement('div');
+    bar.className = 'rail-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    bar.innerHTML = '<span></span>';
+    rail.parentNode.insertBefore(bar, rail.nextSibling);
+    var fill = bar.firstChild;
+    var raf = 0;
+    function update() {
+      raf = 0;
+      var max = rail.scrollWidth - rail.clientWidth;
+      if (max <= 0) return;
+      var view = rail.clientWidth / rail.scrollWidth;
+      fill.style.setProperty('--p', (view + (1 - view) * (rail.scrollLeft / max)).toFixed(3));
+    }
+    railUpdates.push(update);
+    rail.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries, obs) {
+        if (!entries[0].isIntersecting) return;
+        rail.querySelectorAll('[data-reveal], [data-reveal-img]').forEach(function (el) { el.classList.add('in'); });
+        update();
+        obs.disconnect();
+      }, { rootMargin: '0px 0px -10% 0px' }).observe(rail);
+    }
+  });
+  // Bring a card inside a rail into view horizontally (page scroll is handled elsewhere).
+  function railTo(card) {
+    var rail = card.parentElement;
+    if (!rail || rail.scrollWidth <= rail.clientWidth) return;
+    var base = card.offsetParent === rail ? 0 : rail.offsetLeft;
+    rail.scrollLeft = card.offsetLeft - base - parseFloat(getComputedStyle(rail).paddingLeft || 0);
+  }
+
   var svcTabs = Array.prototype.slice.call(document.querySelectorAll('.svc-tab'));
   var svcInk = document.querySelector('.svc-tab-ink');
   function moveInk(tab) {
@@ -196,6 +237,7 @@
       }
     });
     moveInk(tab);
+    railUpdates.forEach(function (fn) { fn(); });
     if (focus) tab.focus();
   }
   if (svcTabs.length) {
@@ -229,6 +271,7 @@
       var tab = document.querySelector('.svc-tab[aria-controls="' + panel.id + '"]');
       if (tab) selectSvc(tab, false);
     }
+    railTo(card);
     card.classList.remove('is-flash');
     void card.offsetWidth;
     card.classList.add('is-flash');

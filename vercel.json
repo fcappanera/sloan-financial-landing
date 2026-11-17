@@ -2,6 +2,38 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/about-us",
+      "destination": "/our-story",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/business-services",
+      "destination": "/tax-services#bookkeeping",
+      "permanent": true
+    },
+    {
+      "source": "/529-and-utmas",
+      "destination": "/financial-planning#saving-for-minors",
+      "permanent": true
+    },
+    {
+      "source": "/resources",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

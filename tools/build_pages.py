@@ -144,6 +144,8 @@ def build(fname, slug, title, desc, crumb_name, body_class, schemas, main):
     head = head.replace('<body class="page-story">', f'<body class="{body_class}">')
     head = head.replace('href="#team"', 'href="/our-story#team"')
     tail = POST.replace('href="#team"', 'href="/our-story#team"')
+    if slug == 'barron-wi':
+        tail = tail.replace('<a href="tel:9524328000" class="mobile-cta-call">', '<a href="tel:7154182044" class="mobile-cta-call">')
     open(fname, 'w').write(head + '    <main id="main">\n' + main + '    </main>' + tail)
     print('built', fname)
 
@@ -194,8 +196,8 @@ fp_main = page_hero(
     'Financial Planning',
     jump_card('On this page', [(r[0], r[2].split(':')[0]) for r in fp_rows])) + detail_rows(fp_rows) + faq_html('Financial planning FAQ', 'Questions about planning with us.', fp_faq) + cta('Bring us the question you\'ve been putting off.', 'Can I retire? Can we buy the cabin? Should I roll over my 401(k)? Let\'s figure it out together.')
 build('financial-planning.html', 'financial-planning',
-      'Financial Planning, Roth IRAs &amp; Rollovers | Sloan Financial',
-      'Holistic financial planning in Burnsville, MN and Barron, WI: Roth IRAs, 401(k) rollovers, tax planning, 529s, and estate planning, coordinated by one team.',
+      'Financial Planning in Minnesota &amp; Wisconsin | Sloan Financial',
+      'Holistic financial planning from Sloan Financial Solutions in Burnsville, MN and Barron, WI: Roth IRAs, 401(k) rollovers, tax planning, 529s, and estate planning.',
       'Financial Planning', 'page-detail',
       [{"@context": "https://schema.org", "@type": "Service", "name": "Holistic Financial Planning", "serviceType": "Financial planning", "provider": ORG,
         "areaServed": [f"{c} MN" for c in MN] + [f"{c} WI" for c in NW + SE],
@@ -239,7 +241,7 @@ tx_main = page_hero(
     'Tax Services',
     jump_card('On this page', [(r[0], r[2]) for r in tx_rows])) + detail_rows(tx_rows) + faq_html('Tax services FAQ', 'Questions about taxes and bookkeeping.', tx_faq) + cta('Tax season is better with a plan.', 'Talk to Adam and the team about your return, your business, or next year\'s strategy.')
 build('tax-services.html', 'tax-services',
-      'Tax Preparation, Planning &amp; Bookkeeping | Sloan Financial',
+      'Tax Preparation &amp; Bookkeeping, Burnsville MN | Sloan Financial',
       'Tax preparation for individuals and businesses, year-round tax planning, and small business bookkeeping in Burnsville, MN and Barron, WI. Call (952) 432-8000.',
       'Tax Services', 'page-detail',
       [{"@context": "https://schema.org", "@type": "Service", "name": "Tax Preparation and Tax Planning", "serviceType": "Tax preparation", "provider": ORG,
@@ -327,10 +329,10 @@ bv_main += area_block('Communities we serve', 'Burnsville and the south metro.',
                       MN, person_mini('team-david.jpg', 'David Sloan', 'Founder &amp; Financial Advisor', 'david', 'Lives in Burnsville with his family') + person_mini('team-adam.jpg', 'Adam SanFelippo', 'Tax &amp; Accounting Advisor', 'adam', 'Tax preparation, planning, and bookkeeping'))
 bv_main += services_block('Everything we offer in Burnsville.') + faq_html('Burnsville, MN FAQ', 'Questions people in Burnsville ask.', bv_faq) + cta('Stop by the Burnsville office.', 'Meet in person on Nicollet Avenue or by video. Either way, you\'ll talk to people who know your name.')
 build('burnsville-mn.html', 'burnsville-mn',
-      'Financial Advisor &amp; Tax Services in Burnsville, MN | Sloan',
-      'Locally owned financial advisor and tax office on Nicollet Ave in Burnsville, MN, serving Apple Valley, Eagan, Savage, Prior Lake, Lakeville, and Shakopee.',
+      'Financial Advisor in Burnsville, MN | Sloan Financial Solutions',
+      'Locally owned financial advisor and tax office in Burnsville, MN, serving the south Twin Cities metro: Apple Valley, Eagan, Savage, Prior Lake, Lakeville, and Shakopee.',
       'Burnsville, MN', 'page-detail page-location',
-      [{"@context": "https://schema.org", "@type": "FinancialService", "@id": f"{DOM}/#burnsville", "name": "Sloan Financial Solutions", "url": f"{DOM}/burnsville-mn",
+      [{"@context": "https://schema.org", "@type": "FinancialService", "@id": f"{DOM}/#burnsville", "name": "Sloan Financial Solutions", "alternateName": ["Sloan Financial", "Sloan Financial Services", "Sloan FS"], "url": f"{DOM}/burnsville-mn",
         "telephone": "+1-952-432-8000", "email": "david@sloanfs.com", "image": f"{DOM}/og-image.png", "address": BURNS_ADDR,
         "geo": {"@type": "GeoCoordinates", "latitude": 44.7801610, "longitude": -93.2787945}, "openingHoursSpecification": HOURS,
         "areaServed": [f"{c} MN" for c in MN], "priceRange": "$$"}, faq_ld(bv_faq)], bv_main)
@@ -353,8 +355,8 @@ br_main += area_block('Communities we serve', 'Barron and Northwest Wisconsin.',
                       NW, person_mini('team-eric.jpg', 'Eric Holten', 'Financial Assistant', 'eric', 'Barron native, Life &amp; Health Insurance Agent') + person_mini('team-david.jpg', 'David Sloan', 'Founder &amp; Financial Advisor', 'david', 'Grew up in Barron'))
 br_main += services_block('Everything we offer in Barron.') + faq_html('Barron, WI FAQ', 'Questions people in Barron ask.', br_faq) + cta('Stop by the Barron office.', 'Meet Eric on La Salle Avenue or by video. When you call in, you know us and we know you.')
 build('barron-wi.html', 'barron-wi',
-      'Financial Advisor &amp; Tax Services in Barron, WI | Sloan',
-      'Financial advisor and tax office on La Salle Ave in Barron, WI, serving Rice Lake, Cameron, Chetek, Spooner, Cumberland, and Hayward.',
+      'Financial Advisor in Barron, WI | Sloan Financial Solutions',
+      'Financial advisor and tax office on La Salle Ave in Barron, WI, serving Northwest Wisconsin: Rice Lake, Cameron, Chetek, Spooner, Cumberland, and Hayward.',
       'Barron, WI', 'page-detail page-location',
       [{"@context": "https://schema.org", "@type": "FinancialService", "@id": f"{DOM}/barron-wi#office", "name": "Sloan Financial Solutions, Barron office", "url": f"{DOM}/barron-wi",
         "telephone": "+1-715-418-2044", "email": "eric@sloanfs.com", "image": f"{DOM}/og-image.png", "address": BARRON_ADDR,
