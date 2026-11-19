@@ -329,7 +329,7 @@ button { font: inherit; }
   width: 100%;
   aspect-ratio: 5 / 4;
   object-fit: cover;
-  object-position: 25% 60%;
+  object-position: 50% 40%;
   border-radius: var(--radius);
 }
 
@@ -2334,4 +2334,10 @@ html.motion .serve-strip img:nth-child(3) { transition-delay: 0.24s; }
   .about-portrait { max-width: 280px; }
   .polaroid-home { right: -18%; }
   .polaroid figcaption { font-size: 1.05rem; }
+}
+
+/* v16: team photo hero. On phones the status card sits under the photo so it never covers faces. */
+@media (max-width: 640px) {
+  .hero-photo .hero-card { position: relative; left: auto; right: auto; bottom: auto; margin: -36px 14px 0; }
+  .hero-photo::before { inset: 14px -10px 40px 10px; }
 }

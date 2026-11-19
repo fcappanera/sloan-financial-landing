@@ -326,7 +326,7 @@ bv_main = page_hero(
     office_side('Burnsville', '12301 Nicollet Ave, Suite 101<br />Burnsville, MN 55337', '(952) 432-8000', '9524328000', 'david@sloanfs.com', '12301+Nicollet+Ave+Suite+101+Burnsville+MN+55337'))
 bv_main += area_block('Communities we serve', 'Burnsville and the south metro.',
                       '"There are wealthier suburbs in the Twin Cities, but Burnsville is our home, and that\'s where I want to have a presence." &mdash; David Sloan. From this office we work with families, retirees, and business owners across Dakota and Scott counties.',
-                      MN, person_mini('team-david.jpg', 'David Sloan', 'Founder &amp; Financial Advisor', 'david', 'Lives in Burnsville with his family') + person_mini('team-adam.jpg', 'Adam SanFelippo', 'Tax &amp; Accounting Advisor', 'adam', 'Tax preparation, planning, and bookkeeping'))
+                      MN, person_mini('david-headshot.jpg', 'David Sloan', 'Founder &amp; Financial Advisor', 'david', 'Lives in Burnsville with his family') + person_mini('adam-headshot.jpg', 'Adam SanFelippo', 'Tax &amp; Accounting Advisor', 'adam', 'Tax preparation, planning, and bookkeeping'))
 bv_main += services_block('Everything we offer in Burnsville.') + faq_html('Burnsville, MN FAQ', 'Questions people in Burnsville ask.', bv_faq) + cta('Stop by the Burnsville office.', 'Meet in person on Nicollet Avenue or by video. Either way, you\'ll talk to people who know your name.')
 build('burnsville-mn.html', 'burnsville-mn',
       'Financial Advisor in Burnsville, MN | Sloan Financial Solutions',
@@ -352,7 +352,7 @@ br_main = page_hero(
     office_side('Barron', '421 E La Salle Ave, Suite A<br />Barron, WI 54812', '(715) 418-2044', '7154182044', 'eric@sloanfs.com', '421+E+La+Salle+Ave+Barron+WI+54812'))
 br_main += area_block('Communities we serve', 'Barron and Northwest Wisconsin.',
                       'Eric Holten opened our Barron office in 2022 after years on the road. "I get to work with people I\'ve known most of my life, as well as people I\'m just getting to know." You\'ll find him at Barron games, coaching the varsity boys basketball team, or out in the woods.',
-                      NW, person_mini('team-eric.jpg', 'Eric Holten', 'Financial Assistant', 'eric', 'Barron native, Life &amp; Health Insurance Agent') + person_mini('team-david.jpg', 'David Sloan', 'Founder &amp; Financial Advisor', 'david', 'Grew up in Barron'))
+                      NW, person_mini('eric-headshot.jpg', 'Eric Holten', 'Financial Assistant', 'eric', 'Barron native, Life &amp; Health Insurance Agent') + person_mini('david-headshot.jpg', 'David Sloan', 'Founder &amp; Financial Advisor', 'david', 'Grew up in Barron'))
 br_main += services_block('Everything we offer in Barron.') + faq_html('Barron, WI FAQ', 'Questions people in Barron ask.', br_faq) + cta('Stop by the Barron office.', 'Meet Eric on La Salle Avenue or by video. When you call in, you know us and we know you.')
 build('barron-wi.html', 'barron-wi',
       'Financial Advisor in Barron, WI | Sloan Financial Solutions',
@@ -371,7 +371,7 @@ mk_faq = [
     ('How do I get started?', 'Call Adam at <a href="tel:2622720744">(262) 272-0744</a>, email <a href="mailto:adam@sloanfs.com">adam@sloanfs.com</a>, or call our main line at <a href="tel:9524328000">(952) 432-8000</a>.'),
 ]
 mk_side = '''          <aside class="loc-card loc-card-person">
-            <img decoding="async" src="images/team-adam.jpg" alt="Adam SanFelippo" width="360" height="360" />
+            <img decoding="async" src="images/adam-headshot.jpg" alt="Adam SanFelippo" width="600" height="600" />
             <p class="loc-card-title">Adam SanFelippo</p>
             <p class="loc-addr">Tax &amp; Accounting Advisor &middot; Milwaukee area</p>
             <p><a class="loc-phone" href="tel:2622720744">(262) 272-0744</a></p>
@@ -385,7 +385,7 @@ mk_main = page_hero(
     'Milwaukee area', mk_side)
 mk_main += area_block('Communities we serve', 'Milwaukee and Southeast Wisconsin.',
                       'Adam grew up in Milwaukee and spent more than a decade in banking and actuarial work before joining Sloan. He leads our tax preparation, tax planning, and bookkeeping, and works side by side with David on every client\'s plan.',
-                      SE, person_mini('team-adam.jpg', 'Adam SanFelippo', 'Tax &amp; Accounting Advisor', 'adam', 'Grew up in Milwaukee') + person_mini('team-david.jpg', 'David Sloan', 'Founder &amp; Financial Advisor', 'david', 'Meets Milwaukee-area clients by video'))
+                      SE, person_mini('adam-headshot.jpg', 'Adam SanFelippo', 'Tax &amp; Accounting Advisor', 'adam', 'Grew up in Milwaukee') + person_mini('david-headshot.jpg', 'David Sloan', 'Founder &amp; Financial Advisor', 'david', 'Meets Milwaukee-area clients by video'))
 mk_main += services_block('Everything we offer, wherever you are.') + faq_html('Milwaukee area FAQ', 'Questions from Southeast Wisconsin.', mk_faq) + cta('Let\'s meet by video.', 'Call Adam at (262) 272-0744 or reach our main office. We\'ll find a time that works for you.')
 build('milwaukee-wi.html', 'milwaukee-wi',
       'Financial Planning &amp; Tax Help, Milwaukee Area | Sloan',
