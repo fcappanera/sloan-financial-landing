@@ -178,7 +178,7 @@
   // and the whole row reveals together once it scrolls into view.
   // ---------------------------------------------------------------
   var railUpdates = [];
-  document.querySelectorAll('.service-grid-3, .service-grid-2, .persona-grid').forEach(function (rail) {
+  document.querySelectorAll('.service-grid-3, .service-grid-2, .persona-grid, .team-grid').forEach(function (rail) {
     var bar = document.createElement('div');
     bar.className = 'rail-progress';
     bar.setAttribute('aria-hidden', 'true');
@@ -584,6 +584,36 @@
       show();
     });
   });
+
+  // ---------------------------------------------------------------
+  // Team portraits: gentle 3D tilt and a light that follows the pointer
+  // (mouse and trackpad only; touch and reduced motion get the static card).
+  // ---------------------------------------------------------------
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.contains('motion')) {
+    document.querySelectorAll('.person-photo').forEach(function (el) {
+      var raf = 0, px = 0.5, py = 0.5;
+      function apply() {
+        raf = 0;
+        el.style.setProperty('--ry', ((px - 0.5) * 8).toFixed(2) + 'deg');
+        el.style.setProperty('--rx', ((0.5 - py) * 6).toFixed(2) + 'deg');
+        el.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+        el.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+      }
+      el.addEventListener('pointerenter', function () { el.classList.add('is-tilting'); });
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        px = (e.clientX - r.left) / r.width;
+        py = (e.clientY - r.top) / r.height;
+        if (!raf) raf = requestAnimationFrame(apply);
+      });
+      el.addEventListener('pointerleave', function () {
+        el.classList.remove('is-tilting');
+        px = 0.5; py = 0.5;
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
 
   // ---------------------------------------------------------------
   // FAQ: one open at a time
