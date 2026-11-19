@@ -349,7 +349,7 @@
     // 2. Generic reveal targets, staggered inside their group.
     var groups = [
       '.trust-row p', '.service-card', '.persona', '.wealth-path li', '.tax-line', '.detail-copy > *:not(h2)', '.detail-card', '.jump-card', '.loc-card', '.chips li', '.person-mini', '.loc-svc', '.loc-area-text', '.crumbs', '.serve-card', '.steps li', '.team-card', '.person', '.roots-card',
-      '.promise', '.chapter-list li', '.faq-item', '.office-card', '.map-card', '.story-facts p', '.year-stop',
+      '.promise', '.polaroid', '.chapter-list li', '.faq-item', '.office-card', '.map-card', '.story-facts p', '.year-stop',
       '.footer-grid > div', '.section-sub', '.section-head .eyebrow', '.about-copy > p, .about-copy > a, .signature-row',
       '.why-copy > p, .why-copy .signature-row', '.compare-copy > p', '.contact-head > p', '.quote-sub', '.ask-card',
       '.hero-copy > *:not(h1)', '.story-hero-copy > *:not(h1)',
