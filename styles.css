@@ -2485,3 +2485,88 @@ a.team-card h3 { margin-bottom: 2px; }
   .hero-photo { margin-bottom: 48px; }
   .hero-photo .hero-card { left: -28px; bottom: -56px; }
 }
+
+/* ==================================================================
+   v19: Seasonal touches (seasonal.js), hidden city ticker, mobile
+   founder photo proportions
+   ================================================================== */
+
+/* Greeting pill above the hero eyebrow */
+.season-greeting {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 20px;
+  padding: 7px 16px 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 6px 18px rgba(20, 41, 59, 0.06);
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--navy);
+  animation: season-in 0.9s var(--ease) both;
+}
+.season-greeting svg { flex: none; width: 20px; height: 20px; }
+.season-thanksgiving .season-greeting svg { animation: leaf-sway 3.2s ease-in-out infinite; transform-origin: 50% 90%; }
+.season-christmas .season-greeting { border-color: rgba(178, 58, 50, 0.25); }
+.season-christmas .season-greeting svg { animation: flake-spin 9s linear infinite; }
+@keyframes season-in { from { opacity: 0; translate: 0 -6px; } to { opacity: 1; translate: 0 0; } }
+@keyframes leaf-sway { 0%, 100% { rotate: -10deg; } 50% { rotate: 10deg; } }
+@keyframes flake-spin { to { rotate: 360deg; } }
+
+/* Falling leaves / snow sit behind the hero content */
+.season-layer { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.season-layer canvas { display: block; }
+.hero-grid { z-index: 1; }
+
+/* Santa's sleigh crosses the top of the hero every so often */
+.season-sky { position: absolute; left: 0; right: 0; top: 6px; height: 96px; z-index: 2; overflow: hidden; pointer-events: none; }
+.sleigh { position: absolute; left: 0; top: 0; animation: sleigh-fly 28s linear 1.5s infinite; translate: -320px 24px; }
+.sleigh svg { display: block; animation: sleigh-bob 1.6s ease-in-out infinite; }
+.sleigh .legs { animation: gallop 0.5s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 50% 0; }
+.sleigh-trail circle { animation: twinkle 0.9s ease-in-out infinite alternate; }
+.sleigh-trail circle:nth-child(2) { animation-delay: 0.3s; }
+.sleigh-trail circle:nth-child(3) { animation-delay: 0.6s; }
+@keyframes sleigh-fly {
+  0% { translate: -320px 34px; }
+  42% { translate: calc(100vw + 40px) -4px; }
+  100% { translate: calc(100vw + 40px) -4px; }
+}
+@keyframes sleigh-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+@keyframes gallop { from { rotate: -10deg; } to { rotate: 12deg; } }
+@keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
+
+@media (max-width: 640px) {
+  .season-greeting { font-size: 0.8rem; margin-bottom: 16px; }
+  .season-sky { top: 0; height: 64px; z-index: 0; }
+  .sleigh svg { width: 180px; height: 54px; }
+  @keyframes sleigh-fly {
+    0% { translate: -200px 22px; }
+    42% { translate: calc(100vw + 30px) -2px; }
+    100% { translate: calc(100vw + 30px) -2px; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .season-greeting, .season-greeting svg { animation: none !important; }
+}
+
+/* City ticker: kept in the HTML for search engines, hidden from view */
+.marquee { display: none !important; }
+
+/* Our Story on phones: David's portrait leads, the boys' polaroid tucks in at the corner */
+@media (max-width: 960px) {
+  .why-aside {
+    display: grid;
+    grid-template-columns: 1fr 42%;
+    grid-template-rows: auto auto auto;
+    gap: 0;
+    align-items: end;
+    max-width: 460px;
+  }
+  .why-aside .portrait { grid-column: 1 / span 2; grid-row: 1; width: 80%; max-width: none; }
+  .why-aside .polaroid-story { grid-column: 2; grid-row: 1; justify-self: end; align-self: end; width: 100%; max-width: 190px; margin: 0 0 -34px; z-index: 2; rotate: 4deg; }
+  .why-aside-name { grid-column: 1; grid-row: 2; margin: 18px 0 0; align-self: start; }
+  .why-aside-role { grid-column: 1; grid-row: 3; }
+}
