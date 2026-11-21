@@ -2491,7 +2491,7 @@ a.team-card h3 { margin-bottom: 2px; }
    founder photo proportions
    ================================================================== */
 
-/* Greeting pill above the hero eyebrow */
+/* Greeting pill above the first hero on every page */
 .season-greeting {
   display: inline-flex;
   align-items: center;
@@ -2512,41 +2512,176 @@ a.team-card h3 { margin-bottom: 2px; }
 .season-thanksgiving .season-greeting svg { animation: leaf-sway 3.2s ease-in-out infinite; transform-origin: 50% 90%; }
 .season-christmas .season-greeting { border-color: rgba(178, 58, 50, 0.25); }
 .season-christmas .season-greeting svg { animation: flake-spin 9s linear infinite; }
+.season-game-off .season-greeting { cursor: pointer; }
 @keyframes season-in { from { opacity: 0; translate: 0 -6px; } to { opacity: 1; translate: 0 0; } }
 @keyframes leaf-sway { 0%, 100% { rotate: -10deg; } 50% { rotate: 10deg; } }
 @keyframes flake-spin { to { rotate: 360deg; } }
 
-/* Falling leaves / snow sit behind the hero content */
-.season-layer { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+/* Leaves / snow fall over every page, under the header */
+.season-layer { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
 .season-layer canvas { display: block; }
-.hero-grid { z-index: 1; }
 
-/* Santa's sleigh crosses the top of the hero every so often */
-.season-sky { position: absolute; left: 0; right: 0; top: 6px; height: 96px; z-index: 2; overflow: hidden; pointer-events: none; }
-.sleigh { position: absolute; left: 0; top: 0; animation: sleigh-fly 28s linear 1.5s infinite; translate: -320px 24px; }
-.sleigh svg { display: block; animation: sleigh-bob 1.6s ease-in-out infinite; }
-.sleigh .legs { animation: gallop 0.5s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 50% 0; }
+/* ---------- Cookies left around the page ---------- */
+.season-cookies { position: absolute; top: 0; left: 0; width: 100%; height: 0; z-index: 45; }
+.season-cookie {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  rotate: var(--tilt, 0deg);
+  filter: drop-shadow(0 3px 4px rgba(20, 41, 59, 0.28));
+  transition: scale 0.2s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.season-cookie::before { content: ""; position: absolute; inset: -10px; }
+.season-cookie svg { display: block; width: 100%; height: 100%; animation: cookie-wiggle 3.6s ease-in-out infinite; }
+.season-cookie:hover { scale: 1.2; }
+.season-cookie.is-dropped { animation: cookie-drop 0.55s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+.season-cookie.is-falling { animation: cookie-fall 1s cubic-bezier(0.5, 0, 0.75, 0) both, cookie-land 0.35s 1s ease-out; }
+.season-cookie.is-collected { pointer-events: none; animation: cookie-collect 0.45s var(--ease) forwards; }
+@keyframes cookie-drop { from { opacity: 0; scale: 0.3; translate: 0 -18px; } to { opacity: 1; scale: 1; translate: 0 0; } }
+@keyframes cookie-fall { from { translate: 0 calc(var(--fall) * -1); } to { translate: 0 0; } }
+@keyframes cookie-land { 0% { scale: 1.15 0.85; } 100% { scale: 1; } }
+@keyframes cookie-collect { 40% { scale: 1.45; opacity: 1; } 100% { scale: 0.2; opacity: 0; } }
+@keyframes cookie-wiggle { 0%, 86%, 100% { rotate: 0deg; } 90% { rotate: -12deg; } 95% { rotate: 10deg; } }
+.season-crumb { position: absolute; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: #b9803e; pointer-events: none; animation: crumb 0.75s ease-out forwards; }
+.season-christmas .season-crumb { background: #b86a2e; }
+@keyframes crumb { to { translate: var(--dx) calc(var(--dy) + 28px); opacity: 0; scale: 0.5; } }
+.season-pop { position: absolute; pointer-events: none; font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--brass); text-shadow: 0 1px 0 #fff; animation: pop-up 1.1s var(--ease) forwards; }
+@keyframes pop-up { from { opacity: 0; translate: 0 6px; } 20% { opacity: 1; } to { opacity: 0; translate: 0 -38px; } }
+
+/* ---------- Score ---------- */
+.season-hud {
+  position: fixed;
+  left: 16px;
+  bottom: 104px;
+  z-index: 66;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px 7px 8px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 10px 28px rgba(20, 41, 59, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: season-in 0.8s 1.2s var(--ease) both;
+}
+.hud-cookie { display: block; width: 32px; height: 32px; }
+.hud-cookie svg { width: 100%; height: 100%; }
+.season-hud.is-bump .hud-cookie { animation: hud-bump 0.5s var(--ease); }
+@keyframes hud-bump { 40% { scale: 1.35; rotate: -18deg; } }
+.hud-text { display: block; line-height: 1.15; padding-right: 2px; }
+.hud-text strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--navy); }
+.hud-goal { font-size: 0.85rem; color: var(--muted); }
+.hud-text em { display: block; font-style: normal; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; color: var(--brass); white-space: nowrap; }
+.hud-close { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; background: var(--bg); color: var(--muted); font-size: 1.1rem; line-height: 1; cursor: pointer; }
+.hud-close:hover { background: var(--line); color: var(--navy); }
+
+/* ---------- The turkey ---------- */
+.turkey { position: fixed; left: 0; bottom: 14px; z-index: 67; width: 88px; height: 81px; cursor: pointer; transform: translate3d(-120px, 0, 0); will-change: transform; -webkit-tap-highlight-color: transparent; }
+.turkey-flip { transition: scale 0.25s var(--ease); }
+.turkey.is-left .turkey-flip { scale: -1 1; }
+.turkey-svg { display: block; overflow: visible; animation: turkey-bob 0.45s ease-in-out infinite alternate; transition: scale 0.2s ease; }
+.turkey:hover .turkey-svg { scale: 1.08; }
+.turkey .leg-a { transform-origin: 44px 72px; animation: turkey-step 0.45s ease-in-out infinite alternate; }
+.turkey .leg-b { transform-origin: 54px 72px; animation: turkey-step 0.45s ease-in-out infinite alternate-reverse; }
+.turkey-tail { transform-origin: 34px 48px; animation: tail-fan 2.6s ease-in-out infinite; }
+.turkey-head { transform-origin: 62px 50px; animation: head-bob 0.45s ease-in-out infinite alternate; }
+.turkey-wing { transform-origin: 48px 54px; }
+@keyframes turkey-bob { from { translate: 0 0; } to { translate: 0 -2px; } }
+@keyframes turkey-step { from { rotate: -16deg; } to { rotate: 16deg; } }
+@keyframes tail-fan { 0%, 100% { scale: 1; } 50% { scale: 1.07; } }
+@keyframes head-bob { from { translate: -1px 0; } to { translate: 2px -1px; } }
+.turkey.is-pecking .turkey-svg, .turkey.is-pecking .leg { animation: none; }
+.turkey.is-pecking .turkey-head { animation: peck 0.3s ease-in-out infinite alternate; }
+@keyframes peck { from { rotate: 0deg; } to { rotate: 42deg; } }
+.turkey.is-flying .turkey-svg, .turkey.is-flying .leg, .turkey.is-flying .turkey-head { animation: none; }
+.turkey.is-flying .leg-a, .turkey.is-flying .leg-b { rotate: 38deg; }
+.turkey.is-flying .turkey-wing { animation: flap 0.14s linear infinite alternate; }
+.turkey.is-flying .turkey-tail { scale: 1.12; }
+@keyframes flap { from { rotate: 18deg; } to { rotate: -48deg; translate: 0 -6px; } }
+.turkey.is-poked .turkey-svg { animation: turkey-hop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1); }
+@keyframes turkey-hop { 40% { translate: 0 -18px; scale: 1.1 0.92; } }
+
+.turkey-bubble, .sleigh-bubble {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(20, 41, 59, 0.15);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--navy);
+  opacity: 0;
+  translate: -50% 6px;
+  scale: 0.85;
+  transition: opacity 0.25s ease, translate 0.35s var(--ease), scale 0.35s var(--ease);
+  pointer-events: none;
+}
+.turkey-bubble::after, .sleigh-bubble::after { content: ""; position: absolute; left: 50%; top: 100%; width: 10px; height: 10px; margin: -5px 0 0 -5px; background: #fff; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); rotate: 45deg; }
+.turkey-bubble.is-on, .sleigh-bubble.is-on { opacity: 1; translate: -50% 0; scale: 1; }
+.sleigh-bubble { bottom: auto; top: -30px; left: 70%; }
+.sleigh-bubble::after { display: none; }
+
+/* ---------- Santa's sleigh ---------- */
+.season-sleigh { position: fixed; left: 0; top: 0; z-index: 48; cursor: pointer; transform: translate3d(-400px, 0, 0); will-change: transform; -webkit-tap-highlight-color: transparent; }
+.season-sleigh svg { display: block; overflow: visible; animation: sleigh-bob 1.6s ease-in-out infinite; }
+.season-sleigh .legs { animation: gallop 0.5s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 50% 0; }
 .sleigh-trail circle { animation: twinkle 0.9s ease-in-out infinite alternate; }
 .sleigh-trail circle:nth-child(2) { animation-delay: 0.3s; }
 .sleigh-trail circle:nth-child(3) { animation-delay: 0.6s; }
-@keyframes sleigh-fly {
-  0% { translate: -320px 34px; }
-  42% { translate: calc(100vw + 40px) -4px; }
-  100% { translate: calc(100vw + 40px) -4px; }
-}
 @keyframes sleigh-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
 @keyframes gallop { from { rotate: -10deg; } to { rotate: 12deg; } }
 @keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
 
+/* ---------- Celebration ---------- */
+.season-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 90;
+  width: min(420px, calc(100% - 32px));
+  padding: 24px 24px 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 30px 70px rgba(20, 41, 59, 0.28);
+  text-align: center;
+  opacity: 0;
+  translate: -50% 30px;
+  scale: 0.94;
+  transition: opacity 0.4s ease, translate 0.5s var(--ease), scale 0.5s var(--ease);
+}
+.season-toast.is-in { opacity: 1; translate: -50% 0; scale: 1; }
+.toast-emoji { display: block; font-size: 2.4rem; line-height: 1; animation: turkey-hop 0.8s 0.3s cubic-bezier(0.3, 1.6, 0.5, 1) 2; }
+.toast-title { margin: 10px 0 6px; font-family: var(--serif); font-size: 1.45rem; color: var(--navy); }
+.toast-text { margin: 0 0 16px; font-size: 0.95rem; color: var(--muted); }
+.toast-actions { display: flex; justify-content: center; align-items: center; gap: 16px; }
+.toast-keep { padding: 11px 20px; border: 0; border-radius: 10px; background: var(--navy); color: #fff; font-weight: 600; cursor: pointer; }
+.toast-hide { padding: 8px 4px; border: 0; background: none; color: var(--muted); font-weight: 600; cursor: pointer; text-decoration: underline; }
+
+.season-game-off .turkey, .season-game-off .season-hud, .season-game-off .season-cookies { display: none; }
+
+@media (max-width: 760px) {
+  .turkey { bottom: 92px; width: 70px; height: 64px; }
+  .turkey-svg { width: 70px; height: 64px; }
+  .season-hud { left: 12px; bottom: 166px; padding: 5px 6px; gap: 8px; }
+  .hud-cookie { width: 26px; height: 26px; }
+  .hud-text em { display: none; }
+  .season-sleigh svg { width: 180px; height: 54px; }
+  .season-toast { bottom: 96px; }
+}
 @media (max-width: 640px) {
   .season-greeting { font-size: 0.8rem; margin-bottom: 16px; }
-  .season-sky { top: 0; height: 64px; z-index: 0; }
-  .sleigh svg { width: 180px; height: 54px; }
-  @keyframes sleigh-fly {
-    0% { translate: -200px 22px; }
-    42% { translate: calc(100vw + 30px) -2px; }
-    100% { translate: calc(100vw + 30px) -2px; }
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .season-greeting, .season-greeting svg { animation: none !important; }
